@@ -1,2 +1,4 @@
-# EzrebClan.atspace.cc
-The code repository for my website, hosted at EzrebClan.atspace.cc :D
+MrabEzreb.github.io
+===================
+
+This should work to do what I want. Basically, you should be able to calculate the delta-v of various maneuvers in kerbal space program.
