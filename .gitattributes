@@ -1,3 +1,4 @@
 *.html linguist-vendored=false
 Blockly/* linguist-vendored=true
 *.html linguist-language=WebIDL
+querypath-3.0.3/* linguist-vendored=true
