@@ -1,1 +1,2 @@
-*.html linguist-language=Other
+*.html linguist-vendored=false
+Blockly/* linguist-vendored=true
