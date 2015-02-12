@@ -11,6 +11,6 @@
         fwrite($myFile2, "\n");
         fclose($myFile2);
          ?>
-        <a href="/PHP/announcement.php">Finish</a>
+        <a href="../PHP/announcement.php">Finish</a>
     </body>
 </html>

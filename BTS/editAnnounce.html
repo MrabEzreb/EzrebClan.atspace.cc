@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<script src="../javascripts/announce.js"></script>
+	</head>
 	<body>
-		<form action="../PHP/editAnnounce.php" method="post">
+		<form action="../PHP/editAnnounce.php" method="post" name="announce">
 			<input type="text" name="h"><br>
+			<input type="text" name="n"><br>
 			<input type="text" name="p"><br>
-			<input type="submit">
+			<input type="text" name="p2"><br>
+			<input type="submit" value="Submit" id="sub" style="display: none">
 		</form>
+		<br>
+		<button id="but" onclick="validateForm()" style="width: 200; height: 50;">test</button>
 	</body>
 </html>
