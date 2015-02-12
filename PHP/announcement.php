@@ -18,12 +18,12 @@
                         document.getElementById(\"announcementp\").style.color = \"white\";
                         document.getElementById(\"announcement\").style.backgroundColor = \"red\";
                       }
-                      window.onload = setAnnouncement;\n";
+                      window.onload = setAnnouncement;";
            $fhFile = fopen($fhName, "r");
            $fpFile = fopen($fpName, "r");
-           $JSH = "var h1 = \"".fread($fhFile, filesize($fhName)+1)."\"\n;";
-           $JSP = "var p1 = \"".fread($fpFile, filesize($fpName)+1)."\";";
-           $JSFinal = $OldJS.$JSH.$JSP;
+           $JSH = "var h1 = \"".fread($fhFile, filesize($fhName)-1)."\";\n";
+           $JSP = "var p1 = \"".fread($fpFile, filesize($fpName)-1)."\";\n";
+           $JSFinal = $JSH.$JSP.$OldJS;
            fclose($fhFile);
            fclose($fpFile);
            $JSFile = fopen($JSName, "w");
