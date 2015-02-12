@@ -8,7 +8,7 @@
     display: block;
 }
 .jumbotron .containerdnd {
-    background-image: url("/images/HERO_StartBox.jpg"); 
+    background-image: url("../images/HERO_StartBox.jpg"); 
     color: red;
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,6 +18,14 @@
 .Announcement {
     background-color: red;
     text-align: center;
+}
+.adamplays {
+	background-image: url("../images/pika.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    display: block;
+    color: red;
 }
 
 
