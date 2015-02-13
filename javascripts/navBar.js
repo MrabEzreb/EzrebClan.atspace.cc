@@ -74,7 +74,11 @@ function loadFullNav(navArray, active) {
         list.appendChild(navArray[i]);
     }
 }
-var mainNav, mainGamesDrop;
+var mainNav, mainGamesDrop, ezrebPackNav, dndNav;
+
+ezrebPackNav = [getNavElement("EzrebPack", "../EzrebPack"), getNavElement("Download", "../EzrebPack/downloads.html"), getNavElement("Main Site", "..")];
+
+dndNav = [getNavElement("Dnd Toolkit", "../Dnd"), getNavElement("Download", "../Dnd/downloads.html"), getNavElement("Main Site", "..")];
 
 mainGamesDrop = [getNavElement("Dnd", "Dnd"), getNavElement("EzrebPack", "EzrebPack")];
 
@@ -87,6 +91,12 @@ function getArray(navObject) {
     if (name === "main") {
         mainNav[active].className = "active";
         return mainNav;
+    } else if (name === "ezrebpack") {
+        ezrebPackNav[active].className = "active";
+        return ezrebPackNav;
+    } else if (name === "dnd") {
+        dndNav[active].className = "active";
+        return dndNav;
     }
 }
 function insertToElem() {
