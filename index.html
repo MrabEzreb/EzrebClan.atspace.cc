@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="javascripts/navBar.js"></script>
         <link href="stylesheets/bootstrap.css" rel="stylesheet">
         <link href="stylesheets/bootstrap-theme.css" rel="stylesheet">
         <link href="stylesheets/index.css" rel="stylesheet">
         <script src="javascripts/announcement.js"></script>
+        <script src="javascripts/dropdown.js"></script>
     </head>
     <body>
         <div class="Announcement" id="announcement">
@@ -15,26 +17,7 @@
                 </div>
             </div>
         </div>
-        <div class="Nav">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ul class="nav nav-pills" role="tablist">
-                        <li class="active"><a href="index.html">Primary</a></li>
-                        <li class=""><a href="social.html">Social</a></li>
-                        <li class=""><a href="map.html#map">Live Minecraft Minimap</a></li>
-                        <li class="dropdown" id="dropdown">
-                            <a href="#">Games<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="navigation" id="dropdown-menu">
-                                <li role="presentation"><a role="menuitem" href="../Dnd">DnD Toolkit</a></li>
-                                <li role="presentation"><a role="menuitem" href="../EzrebPack/EzrebPack.html">EzrebPack</a></li>
-                                <li role="presentation"><a role="menuitem" href="#">Updates</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <p id="demo"></p>
-        </div>
+        <nav array="main" active=0></nav>   
         <div class="jumbotron">
             <div class="containerindex">
                 <div class="row">

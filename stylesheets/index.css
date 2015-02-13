@@ -30,12 +30,7 @@
 
 
 
-#dropdown #dropdown-menu {
-    display: none;
-}
-#dropdown:hover #dropdown-menu {
-    display:block;
-}
+
 .DndDownloads {
     text-align: center;
     color: green;
