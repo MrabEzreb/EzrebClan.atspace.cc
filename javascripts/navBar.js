@@ -93,8 +93,9 @@ function getNavSlide(name, navElements) {
     elem1.appendChild(a);
     elem2 = document.createElement("ul");
     elem2.className = "dropdown-menu";
+    elem2.style.left = "100%";
+    elem2.style.top = "0%";
     elem2.setAttribute("role", "navigation");
-    elem2.style.display = "list-item";
     elem2.setAttribute("id", "dropdown-menu");
     for (i = 0; i < navElements.length; i = i + 1) {
         navElements[i].setAttribute("role", "presentation");
@@ -131,7 +132,7 @@ dndNav = [getNavElement("Dnd Toolkit", "../Dnd"), getNavElement("Download", "../
 
 mainGamesDrop = [getNavElement("Dnd", "Dnd"), getNavElement("EzrebPack", "EzrebPack")];
 
-mainClanAdamSlide = [getNavElement("Home", "EzrebClan/adam.html")];
+mainClanAdamSlide = [getNavElement("Home", "EzrebClan/adam.html"), getNavElement("Youtube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA")];
 
 mainClanDrop = [getNavSlide("Adam", mainClanAdamSlide)];
 

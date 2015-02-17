@@ -18,7 +18,25 @@
                         document.getElementById(\"announcementp\").style.color = \"white\";
                         document.getElementById(\"announcement\").style.backgroundColor = \"red\";
                       }
-                      window.onload = setAnnouncement;";
+                    function loadAnnouncement() {
+                        \"use strict\";
+                        var announce, row, cols, h, p;
+                        announce = document.getElementsByTagName(\"announcement\");
+                        row = document.createElement(\"div\");
+                        cols = document.createElement(\"div\");
+                        row.className = \"row\";
+                        cols.className = \"col-sm-12\";
+                        h = document.createElement(\"h1\");
+                        p = document.createElement(\"p\");
+                        h.id = \"announcementh\";
+                        p.id = \"announcementp\";
+                        cols.appendChild(h);
+                        cols.appendChild(p);
+                        row.appendChild(cols);
+                        announce[0].style = \"background-color: red; text-align: center;\";
+                        announce[0].appendChild(row);
+                    }
+                    window.onload = loadAnnouncement;";
            $fhFile = fopen($fhName, "r");
            $fpFile = fopen($fpName, "r");
            $JSH = "var h1 = \"".fread($fhFile, filesize($fhName)-1)."\";\n";
