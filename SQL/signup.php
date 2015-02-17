@@ -14,15 +14,32 @@
                 $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
                 // set the PDO error mode to exception
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo "Connected successfully"; 
                 }
             catch(PDOException $e)
                 {
                 echo "Connection failed: " . $e->getMessage();
                 }
-            $sql = "INSERT INTO SignupFake
-                VALUES ('$Name', '$Email', '$User', '$Pass')";
-            $conn->exec($sql);
+            $stmt = $conn->prepare("SELECT name FROM SignupFake WHERE Email='$Email';"); 
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC); 
+            $result = $stmt->fetchAll();
+            $number = count($result);
+            if ($number > 0) {
+                echo "There is already an account with that email.";
+            } else {
+                $stmt2 = $conn->prepare("SELECT name FROM SignupFake WHERE Username='$User';"); 
+                $stmt2->execute();
+                $stmt2->setFetchMode(PDO::FETCH_ASSOC); 
+                $result2 = $stmt2->fetchAll();
+                $number2 = count($result2);
+                if ($number2 > 0) {
+                    echo "There is already an account with that username.";
+                } else {
+                    $sql = "INSERT INTO SignupFake
+                        VALUES ('$Name', '$Email', '$User', '$Pass')";
+                    $conn->exec($sql);
+                }
+            }
             $conn = null;
         ?>
     </body>
