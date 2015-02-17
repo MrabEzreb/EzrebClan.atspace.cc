@@ -27,7 +27,7 @@
             if ($number > 0) {
                 echo "There is already an account with that email.";
             } else {
-                $stmt2 = $conn->prepare("SELECT name FROM SignupFake WHERE Username='$User';"); 
+                $stmt2 = $conn->prepare("SELECT name FROM Profiles WHERE Username='$User';"); 
                 $stmt2->execute();
                 $stmt2->setFetchMode(PDO::FETCH_ASSOC); 
                 $result2 = $stmt2->fetchAll();
@@ -35,8 +35,9 @@
                 if ($number2 > 0) {
                     echo "There is already an account with that username.";
                 } else {
+                    $hashcode = uniqid('ezreb_', true)
                     $sql = "INSERT INTO SignupFake
-                        VALUES ('$Name', '$Email', '$User', '$Pass')";
+                        VALUES ('$Name', '$Email', '$User', '$Pass', false, '$hashcode')";
                     $conn->exec($sql);
                 }
             }
