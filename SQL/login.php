@@ -4,10 +4,10 @@
         <?php
             $User = $_POST["username"];
             $Pass = $_POST["password"];
-            $servername = "mysql.serversfree.com";
-            $username = "u253095539_testu";
+            $servername = "mysql14.000webhost.com";
+            $username = "a9340268_test";
             $password = "4edxz7yhbn";
-            $db = "u253095539_test";
+            $db = "a9340268_test";
             try {
                 $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
                 // set the PDO error mode to exception
@@ -17,11 +17,12 @@
                 {
                 echo "Connection failed: " . $e->getMessage();
                 }
-            $stmt = $conn->prepare("SELECT name, email FROM SignupFake WHERE Username='$User' AND Password='$Pass';"); 
+            $stmt = $conn->prepare("SELECT name, email, hash FROM Profiles WHERE Username='$User' AND Password='$Pass';"); 
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC); 
             $result = $stmt->fetchAll();
             echo "Your name is ".$result[0]['name']." and your email is ".$result[0]['email'];
+            echo "<br>Your hashcode is ".$result[0]['hash'];
             $conn = null;
         ?>
     </body>
