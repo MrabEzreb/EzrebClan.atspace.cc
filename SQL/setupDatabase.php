@@ -22,6 +22,7 @@
   `password` text COLLATE latin1_general_ci NOT NULL,
   `isActive` tinyint(1) NOT NULL,
   `hash` text COLLATE latin1_general_ci NOT NULL
+  `image` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;");
             $conn = null;
         ?>
