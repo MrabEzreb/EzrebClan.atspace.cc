@@ -19,20 +19,28 @@ function testingData() {
 }
 function openDropdown() {
     "use strict";
-    var userButton, userPanel, body, text;
+    var userButton, userPanel, body, text, link;
     userButton = document.getElementsByTagName("button")[0];
-    userPanel = document.createElement("div");
-    userPanel.className = "userPanel";
-    text = document.createElement("p");
-    text.appendChild(document.createTextNode("test"));
+    userPanel = document.createElement("ul");
+    userPanel.className = "dropdown-menu userPanel";
+    text = document.createElement("li");
+    link = document.createElement("a");
+    link.appendChild(document.createTextNode("Adam Home"));
+    link.setAttribute("role", "menuitem");
+    link.href = "EzrebClan/adam.html";
+    text.appendChild(link);
     text.style.textAlign = "center";
     userPanel.appendChild(text);
-    userPanel.parentElement = userButton;
     body = document.getElementsByTagName("nav")[0];
-    body.appendChild(userPanel);
-    userPanel.style.float = "right";
+    userPanel.style.position = "relative";
+    userPanel.style.right = "100%";
+    userPanel.style.left = "0%";
     userPanel.style.height = "120px";
-    userPanel.style.width = "175px";
+    userPanel.style.width = "auto";
+    userPanel.style.display = "block";
+    userPanel.style.zIndex = "6";
+    userPanel.style.backgroundColor = "white";
+    userButton.appendChild(userPanel);
 }
 function closeDropdown() {
     "use strict";
