@@ -1,0 +1,27 @@
+
+support.expandSupport > div {
+    -webkit-animation: extendSupportAnimation2 5s;
+    -webkit-animation-delay: 1s;
+}
+support.expandSupport > div > p.collapsed {
+    -webkit-animation: extendSupportAnimationPC 5s;
+    -webkit-animation-delay: 1s;
+}
+@-webkit-keyframes extendSupportAnimation {
+    100% {width: 200px; height: 200px;}
+}
+@-webkit-keyframes extendSupportAnimation2 {
+    100% {width: 200px; height: 200px; left: 0%;}
+}
+
+@-webkit-keyframes extendSupportAnimationPC {
+    5% {color: red;}
+    100% {color:blue;}
+}
+@-webkit-keyframes myfirst {
+    0%   {background: red; left:0px; top:0px;}
+    25%  {background: yellow; left:200px; top:0px;}
+    50%  {background: blue; left:200px; top:200px;}
+    75%  {background: green; left:0px; top:200px;}
+    100% {background: red; left:0px; top:0px;}
+}                                                       
