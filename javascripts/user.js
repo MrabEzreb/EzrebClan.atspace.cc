@@ -16,6 +16,8 @@ function testingData() {
     "use strict";
     window.sessionStorage.setItem("profileImSrc", "http://ochumanesociety.com/clients/3697/images/kittens.jpg");
     window.sessionStorage.setItem("username", "MrabEzreb");
+    window.sessionStorage.setItem("HomeLink", "/EzrebClan/adam.html");
+    window.sessionStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb");
 }
 function openDropdown() {
     "use strict";
@@ -25,9 +27,14 @@ function openDropdown() {
     userPanel.className = "dropdown-menu userPanel";
     text = document.createElement("li");
     link = document.createElement("a");
-    link.appendChild(document.createTextNode("Adam Home"));
+    link.appendChild(document.createTextNode(window.sessionStorage.getItem("username")));
     link.setAttribute("role", "menuitem");
-    link.href = "EzrebClan/adam.html";
+    link.href = window.sessionStorage.getItem("HomeLink");
+    text.appendChild(link);
+    link = document.createElement("a");
+    link.appendChild(document.createTextNode("Youtube"));
+    link.setAttribute("role", "menuitem");
+    link.href = window.sessionStorage.getItem("YTLink");
     text.appendChild(link);
     text.style.textAlign = "center";
     userPanel.appendChild(text);
