@@ -1,3 +1,4 @@
+var $ = window.$;
 function generateUser() {
     "use strict";
     var user, pic, frame;
@@ -15,13 +16,16 @@ function addTo() {
 function testingData() {
     "use strict";
     window.sessionStorage.setItem("profileImSrc", "http://ochumanesociety.com/clients/3697/images/kittens.jpg");
-    window.sessionStorage.setItem("username", "MrabEzreb");
+    window.sessionStorage.setItem("username", "AdamPlaysVideoGames");
     window.sessionStorage.setItem("HomeLink", "/EzrebClan/adam.html");
     window.sessionStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb");
 }
 function openDropdown() {
     "use strict";
-    var userButton, userPanel, body, text, link;
+    window.alert(window.document.URL);
+    var userButton, userPanel, body, text, link, currentURL, startOfURLIndex;
+    currentURL = window.document.URL;
+    startOfURLIndex = currentURL.indexOf("/");
     userButton = document.getElementsByTagName("button")[0];
     userPanel = document.createElement("ul");
     userPanel.className = "dropdown-menu userPanel";
@@ -43,7 +47,7 @@ function openDropdown() {
     userPanel.style.right = "100%";
     userPanel.style.left = "0%";
     userPanel.style.height = "120px";
-    userPanel.style.width = "auto";
+    userPanel.style.width = "inherit";
     userPanel.style.display = "block";
     userPanel.style.zIndex = "6";
     userPanel.style.backgroundColor = "white";
@@ -59,7 +63,7 @@ function closeDropdown() {
 }
 function toggleDrop() {
     "use strict";
-    var button;
+    var button, drop;
     button = document.getElementById("user");
     button.onpaste();
     if (button.onpaste === closeDropdown) {
@@ -78,24 +82,24 @@ function generateButton() {
     button.onclick = toggleDrop;
     button.onpaste = openDropdown;
     button.id = "user";
-    text = document.createTextNode("Welcome, " + username);
+    button.style.width = "auto";
+    button.setAttribute("data-toggle", "dropdown");
+    text = document.createTextNode("Welcome, \r" + username);
     image = document.createElement("img");
     image.src = window.sessionStorage.getItem("profileImSrc");
     nav = document.getElementsByTagName("nav")[0].getElementsByClassName("row")[0].getElementsByClassName("col-sm-12")[0].getElementsByClassName("nav nav-pills")[0];
     image.style.height = "40px";
     image.className = "pull-left";
     button.style.height = "40px";
-    button.style.width = "175px";
     p = document.createElement("p");
     p.appendChild(text);
     p.style.verticalAlign = "middle";
     p.style.textAlign = "center";
     p.style.fontSize = "15px";
     p.style.lineHeight = "18px";
-    p.style.wordWrap = "normal";
     button.appendChild(image);
     button.appendChild(p);
-    button.className = "pull-right";
+    button.style.float = "right";
     nav.appendChild(button);
 }
 window.onload = generateButton;
