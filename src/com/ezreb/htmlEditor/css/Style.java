@@ -1,6 +1,6 @@
 package com.ezreb.htmlEditor.css;
 
-public enum Styles {
+public enum Style {
 
 	COLOR("color", "Sets the color of text"),
 	OPACITY("opacity", "Sets the opacity level for an element"),
@@ -14,23 +14,10 @@ public enum Styles {
 	BACKGROUND_ORIGIN("background-origin", "Specifies the positioning area of the background images");
 	
 	private String name;
-	private String value;
 	public final String description;
-	private Styles(String name, String description) {
+	private Style(String name, String description) {
 		this.name = name;
 		this.description = description;
-	}
-	/**
-	 * @return the current value of the style
-	 */
-	public String getValue() {
-		return value;
-	}
-	/**
-	 * @param value the new value to set
-	 */
-	public void setValue(String value) {
-		this.value = value;
 	}
 	/**
 	 * @return the name of the style
