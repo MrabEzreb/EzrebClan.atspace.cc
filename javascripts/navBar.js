@@ -122,9 +122,9 @@ function loadFullNav(navArray, active) {
         list.appendChild(navArray[i]);
     }
 }
-var mainNav, mainGamesDrop, ezrebPackNav, dndNav, ezrebClanNav, mainClanAdamSlide, mainClanDrop;
+var mainNav, mainGamesDrop, ezrebPackNav, dndNav, ezrebClanNav, mainClanAdamSlide, mainClanDrop, mainClanMrabSlide, adamClan, mrabClan;
 
-ezrebClanNav = [getNavElement("Adam", "../EzrebClan/adam.html"), getNavElement("Main Site", "..")];
+ezrebClanNav = [getNavElement("Mrab Ezreb", "../EzrebClan/MrabEzreb"), getNavElement("AdamPlaysVideoGames", "../EzrebClan/AdamPlaysVideoGames"), getNavElement("Main Site", "..")];
 
 ezrebPackNav = [getNavElement("EzrebPack", "../EzrebPack"), getNavElement("Download", "../EzrebPack/downloads.html"), getNavElement("Main Site", "..")];
 
@@ -132,9 +132,15 @@ dndNav = [getNavElement("Dnd Toolkit", "../Dnd"), getNavElement("Download", "../
 
 mainGamesDrop = [getNavElement("Dnd", "Dnd"), getNavElement("EzrebPack", "EzrebPack")];
 
-mainClanAdamSlide = [getNavElement("Home", "EzrebClan/adam.html"), getNavElement("Youtube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA")];
+mainClanAdamSlide = [getNavElement("Home", "EzrebClan/AdamPlaysVideoGames"), getNavElement("Youtube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA")];
 
-mainClanDrop = [getNavSlide("Adam", mainClanAdamSlide)];
+mainClanMrabSlide = [getNavElement("Home", "EzrebClan/MrabEzreb"), getNavElement("YouTube", "https://youtube.com/c/MrabEzreb")];
+
+mainClanDrop = [getNavSlide("Mrab Ezreb", mainClanMrabSlide), getNavSlide("AdamPlaysVideoGames", mainClanAdamSlide)];
+
+adamClan = [getNavElement("Home", "../AdamPlaysVideoGames"), getNavElement("YouTube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA"), getNavElement("Main Site", "../..")];
+
+mrabClan = [getNavElement("Home", "../MrabEzreb"), getNavElement("YouTube", "https://www.youtube.com/c/MrabEzreb"), getNavElement("Main Site", "../..")];
 
 mainNav = [getNavElement("Primary", ".."), getNavElement("Social", "social.html"), getNavElement("Minecraft Minimap", "map.html#map"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop)];
 function getArray(navObject) {
@@ -154,6 +160,12 @@ function getArray(navObject) {
     } else if (name === "ezrebclan") {
         ezrebClanNav[active].className = "active";
         return ezrebClanNav;
+    } else if (name === "AdamPlaysVideoGames") {
+        adamClan[active].className = "active";
+        return adamClan;
+    } else if (name === "MrabEzreb") {
+        mrabClan[active].className = "active";
+        return mrabClan;
     }
 }
 function insertToElem() {
