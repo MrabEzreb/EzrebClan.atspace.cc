@@ -12,6 +12,11 @@ public class HTMLAttribute implements FactoryProduct {
 	}
 	public String name;
 	public String value;
+	public String generateString() {
+		String retVal;
+		retVal = this.name+"=\""+this.value+"\"";
+		return retVal;
+	}
 	@Override
 	public Factory getParentFactory() {
 		return new AttributeFactory();

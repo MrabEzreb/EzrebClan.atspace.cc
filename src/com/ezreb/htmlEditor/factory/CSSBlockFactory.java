@@ -8,7 +8,7 @@ public class CSSBlockFactory implements Factory {
 
 	@Override
 	public FactoryProduct create() {
-		return new CSSBlock();
+		return null;
 	}
 
 }
