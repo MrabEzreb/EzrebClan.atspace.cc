@@ -11,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 public class TestWindow extends JFrame {
 
 	private JPanel contentPane;
-	private TestToolbox testToolbox;
 
 	/**
 	 * Launch the application.
@@ -40,11 +39,7 @@ public class TestWindow extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		testToolbox = new TestToolbox();
-		contentPane.add(testToolbox, BorderLayout.WEST);
-	}
-
-	public TestToolbox getTestToolbox() {
-		return testToolbox;
+		TestWorkspace testWorkspace = new TestWorkspace();
+		contentPane.add(testWorkspace, BorderLayout.CENTER);
 	}
 }
