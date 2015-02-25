@@ -22,7 +22,6 @@ function testingData() {
 }
 function openDropdown() {
     "use strict";
-    window.alert(window.document.URL);
     var userButton, userPanel, body, text, link, currentURL, startOfURLIndex;
     currentURL = window.document.URL;
     startOfURLIndex = currentURL.indexOf("/");
@@ -72,10 +71,25 @@ function toggleDrop() {
         button.onpaste = closeDropdown;
     }
 }
+function grabData() {
+	"use strict";
+	if(window.localStorage.getItem("username") !== null) {
+	    window.sessionStorage.setItem("profileImSrc", window.localStorage.getItem("profileImSrc"));
+	    window.sessionStorage.setItem("username", window.localStorage.getItem("username"));
+	    window.sessionStorage.setItem("HomeLink", "/EzrebClan/AdamPlaysVideoGames");
+	    window.sessionStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb");
+  	} else if(window.sessionStorage.getItem("username") === null) {
+	    window.sessionStorage.setItem("profileImSrc", "");
+	    window.sessionStorage.setItem("username", "Guest");
+	    window.sessionStorage.setItem("HomeLink", "/");
+	    window.sessionStorage.setItem("YTLink", "https://youtube.com");
+	}
+}
 function generateButton() {
     "use strict";
     var button, username, text, image, nav, p;
-    testingData();
+    //testingData();
+    grabData();
     username = window.sessionStorage.getItem("username");
     button = document.createElement("button");
     button.setAttribute("type", "button");
