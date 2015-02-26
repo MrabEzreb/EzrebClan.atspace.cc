@@ -19,6 +19,6 @@ So, if you really really really want to see the dev server, just remember a few 
 3. The webhost does put ads on the site every once in a while :P
 4. If something doesn't work, make an issue on this repo.
 
-
+The dev server is located at EzrebClan.webdua.com
 
 Thanks for reading! Bye!
