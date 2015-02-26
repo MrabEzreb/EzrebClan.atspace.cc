@@ -37,7 +37,7 @@
                 } else {
                     $hashcode = uniqid('ezreb_', true);
                     $sql = "INSERT INTO Profiles
-                        VALUES ('$Name', '$Email', '$User', '$Pass', false, '$hashcode')";
+                        VALUES ('$Name', '$Email', '$User', '$Pass', false, '$hashcode', '')";
                     $conn->exec($sql);
                 }
             }
