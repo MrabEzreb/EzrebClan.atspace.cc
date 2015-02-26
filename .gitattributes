@@ -1,3 +1,4 @@
 *.html linguist-vendored=false
 .project linguist-vendored=true
 Blockly/* linguist-vendored=true
+javascripts/* linguist-vendored=true
