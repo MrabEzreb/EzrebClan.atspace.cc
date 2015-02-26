@@ -8,7 +8,6 @@
  * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=3a59e4115e3ecb4b76aa)
  * Config saved to config.json and https://gist.github.com/3a59e4115e3ecb4b76aa
  */
-var jQuery = window.$;
 +function ($) {
   'use strict';
   var version = $.fn.jquery.split(' ')[0].split('.')

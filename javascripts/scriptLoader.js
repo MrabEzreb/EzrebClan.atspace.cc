@@ -37,7 +37,6 @@ function addStyle(src) {
 function loadScripts() {
 	"use strict";
 	addScript("/javascripts/1jquery.js");
-	addScript("/javascripts/2bootstrap.js");
 	addScript("/javascripts/3link.js");
 	addScript("/javascripts/4navBar.js");
 	addScript("/javascripts/announcement.js");

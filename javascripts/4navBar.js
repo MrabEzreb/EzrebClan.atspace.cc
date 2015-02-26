@@ -122,7 +122,7 @@ function loadFullNav(navArray, active) {
         list.appendChild(navArray[i]);
     }
 }
-var mainNav, mainGamesDrop, ezrebPackNav, dndNav, ezrebClanNav, mainClanAdamSlide, mainClanDrop, mainClanMrabSlide, adamClan, mrabClan, profileBuilder;
+var account, mainNav, mainGamesDrop, ezrebPackNav, dndNav, ezrebClanNav, mainClanAdamSlide, mainClanDrop, mainClanMrabSlide, adamClan, mrabClan, profileBuilder;
 
 ezrebClanNav = [getNavElement("Mrab Ezreb", "/EzrebClan/MrabEzreb"), getNavElement("AdamPlaysVideoGames", "/EzrebClan/AdamPlaysVideoGames"), getNavElement("Main Site", "/")];
 
@@ -143,6 +143,8 @@ adamClan = [getNavElement("Home", "/EzrebClan/AdamPlaysVideoGames"), getNavEleme
 mrabClan = [getNavElement("Home", "/EzrebClan/MrabEzreb"), getNavElement("YouTube", "https://www.youtube.com/c/MrabEzreb"), getNavElement("Main Site", "/")];
 
 profileBuilder = [getNavElement("Main Site", "/"), getNavElement("Save", "save.php")];
+
+account = [getNavElement("Main Site", "/"), getNavElement("Login", "/SQL/login.html"), getNavElement("Signup", "/SQL/signup.html")];
 
 mainNav = [getNavElement("Primary", "/"), getNavElement("Social", "/social.html"), getNavElement("Minecraft Minimap", "/map_rdir.html"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop)];
 function getArray(navObject) {
@@ -171,6 +173,9 @@ function getArray(navObject) {
     } else if (name === "profileBuilder") {
         profileBuilder[active].className = "active";
         return profileBuilder;
+    } else if (name === "account") {
+    	account[active].className = "active";
+    	return account;
     }
 }
 function insertToElem() {

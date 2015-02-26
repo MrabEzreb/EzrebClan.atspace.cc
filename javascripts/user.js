@@ -32,14 +32,26 @@ function openDropdown() {
     userPanel.className = "dropdown-menu userPanel";
     text = document.createElement("li");
     link = document.createElement("a");
-    link.appendChild(document.createTextNode(window.sessionStorage.getItem("username")));
-    link.setAttribute("role", "menuitem");
-    link.href = window.sessionStorage.getItem("HomeLink");
+    if (window.sessionStorage.getItem("YTLink") === "") {
+    	link.appendChild(document.createTextNode("Signup"));
+	    link.setAttribute("role", "menuitem");
+	    link.href = fillInLinkStr("/SQL/signup.html");
+    } else {
+	    link.appendChild(document.createTextNode(window.sessionStorage.getItem("username")));
+	    link.setAttribute("role", "menuitem");
+	    link.href = window.sessionStorage.getItem("HomeLink");
+	}
     text.appendChild(link);
     link = document.createElement("a");
-    link.appendChild(document.createTextNode("Youtube"));
-    link.setAttribute("role", "menuitem");
-    link.href = window.sessionStorage.getItem("YTLink");
+    if (window.sessionStorage.getItem("YTLink") === "") {
+    	link.appendChild(document.createTextNode("Login"));
+	    link.setAttribute("role", "menuitem");
+	    link.href = fillInLinkStr("/SQL/login.html");
+    } else {
+	    link.appendChild(document.createTextNode("Youtube"));
+	    link.setAttribute("role", "menuitem");
+	    link.href = window.sessionStorage.getItem("YTLink");
+	}
     text.appendChild(link);
     text.style.textAlign = "center";
     userPanel.appendChild(text);
@@ -84,7 +96,7 @@ function grabData() {
 	    window.sessionStorage.setItem("profileImSrc", "");
 	    window.sessionStorage.setItem("username", "Guest");
 	    window.sessionStorage.setItem("HomeLink", "/");
-	    window.sessionStorage.setItem("YTLink", "https://youtube.com");
+	    window.sessionStorage.setItem("YTLink", "");
 	}
 }
 function generateButton() {
