@@ -18,6 +18,7 @@ function loadAnnouncement() {
     var announce, announcement, row, cols, h, p;
     announce = document.getElementsByTagName("announcement");
     announcement = document.createElement("div");
+    announce[0].id = "announcement";
     announcement.className = "Announcement";
     row = document.createElement("div");
     cols = document.createElement("div");
@@ -36,4 +37,4 @@ function loadAnnouncement() {
     announce[0].appendChild(announcement);
     setAnnouncement();
 }
-window.onload = loadAnnouncement;
+loadAnnouncement();

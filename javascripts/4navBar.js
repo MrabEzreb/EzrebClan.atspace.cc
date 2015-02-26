@@ -33,7 +33,7 @@ function loadNav(name, link) {
     list2 = document.getElementById("navList");
     elem = document.createElement("li");
     link2 = document.createElement("a");
-    link2.href = link;
+    link2.href = fillInLinkStr(link);
     link2.appendChild(document.createTextNode(name));
     elem.appendChild(link2);
     list2.appendChild(elem);
@@ -45,7 +45,7 @@ function getNavElement(name, link) {
     elem = document.createElement("li");
     link2 = document.createElement("a");
     link2.setAttribute("role", "menuitem");
-    link2.href = link;
+    link2.href = fillInLinkStr(link);
     link2.appendChild(document.createTextNode(name));
     elem.appendChild(link2);
     elem.setAttribute("hide", "true");
@@ -124,27 +124,27 @@ function loadFullNav(navArray, active) {
 }
 var mainNav, mainGamesDrop, ezrebPackNav, dndNav, ezrebClanNav, mainClanAdamSlide, mainClanDrop, mainClanMrabSlide, adamClan, mrabClan, profileBuilder;
 
-ezrebClanNav = [getNavElement("Mrab Ezreb", "../EzrebClan/MrabEzreb"), getNavElement("AdamPlaysVideoGames", "../EzrebClan/AdamPlaysVideoGames"), getNavElement("Main Site", "..")];
+ezrebClanNav = [getNavElement("Mrab Ezreb", "/EzrebClan/MrabEzreb"), getNavElement("AdamPlaysVideoGames", "/EzrebClan/AdamPlaysVideoGames"), getNavElement("Main Site", "/")];
 
-ezrebPackNav = [getNavElement("EzrebPack", "../EzrebPack"), getNavElement("Download", "../EzrebPack/downloads.html"), getNavElement("Main Site", "..")];
+ezrebPackNav = [getNavElement("EzrebPack", "/EzrebPack"), getNavElement("Download", "/EzrebPack/downloads.html"), getNavElement("Main Site", "/")];
 
-dndNav = [getNavElement("Dnd Toolkit", "../Dnd"), getNavElement("Download", "../Dnd/downloads.html"), getNavElement("Main Site", "..")];
+dndNav = [getNavElement("Dnd Toolkit", "/Dnd"), getNavElement("Download", "/Dnd/downloads.html"), getNavElement("Main Site", "/")];
 
-mainGamesDrop = [getNavElement("Dnd", "Dnd"), getNavElement("EzrebPack", "EzrebPack")];
+mainGamesDrop = [getNavElement("Dnd", "/Dnd"), getNavElement("EzrebPack", "/EzrebPack")];
 
-mainClanAdamSlide = [getNavElement("Home", "EzrebClan/AdamPlaysVideoGames"), getNavElement("Youtube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA")];
+mainClanAdamSlide = [getNavElement("Home", "/EzrebClan/AdamPlaysVideoGames"), getNavElement("Youtube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA")];
 
-mainClanMrabSlide = [getNavElement("Home", "EzrebClan/MrabEzreb"), getNavElement("YouTube", "https://youtube.com/c/MrabEzreb")];
+mainClanMrabSlide = [getNavElement("Home", "/EzrebClan/MrabEzreb"), getNavElement("YouTube", "https://youtube.com/c/MrabEzreb")];
 
 mainClanDrop = [getNavSlide("Mrab Ezreb", mainClanMrabSlide), getNavSlide("AdamPlaysVideoGames", mainClanAdamSlide)];
 
-adamClan = [getNavElement("Home", "../AdamPlaysVideoGames"), getNavElement("YouTube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA"), getNavElement("Main Site", "../..")];
+adamClan = [getNavElement("Home", "/EzrebClan/AdamPlaysVideoGames"), getNavElement("YouTube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA"), getNavElement("Main Site", "/")];
 
-mrabClan = [getNavElement("Home", "../MrabEzreb"), getNavElement("YouTube", "https://www.youtube.com/c/MrabEzreb"), getNavElement("Main Site", "../..")];
+mrabClan = [getNavElement("Home", "/EzrebClan/MrabEzreb"), getNavElement("YouTube", "https://www.youtube.com/c/MrabEzreb"), getNavElement("Main Site", "/")];
 
-profileBuilder = [getNavElement("Main Site", ".."), getNavElement("Save", "save.php")];
+profileBuilder = [getNavElement("Main Site", "/"), getNavElement("Save", "save.php")];
 
-mainNav = [getNavElement("Primary", ".."), getNavElement("Social", "social.html"), getNavElement("Minecraft Minimap", "map.html#map"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop)];
+mainNav = [getNavElement("Primary", "/"), getNavElement("Social", "/social.html"), getNavElement("Minecraft Minimap", "/map_rdir.html"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop)];
 function getArray(navObject) {
     "use strict";
     var name, active;
@@ -195,7 +195,4 @@ function run() {
     "use strict";
     insertToElem();
 }
-document.addEventListener('DOMContentLoaded', function () {
-    "use strict";
-    run();
-}, false);
+run();

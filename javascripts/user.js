@@ -1,4 +1,6 @@
-var $ = window.$;
+var $, thisURL;
+$ = window.$;
+thisURL = document.URL;
 function generateUser() {
     "use strict";
     var user, pic, frame;
@@ -116,4 +118,4 @@ function generateButton() {
     button.style.float = "right";
     nav.appendChild(button);
 }
-window.onload = generateButton;
+generateButton();
