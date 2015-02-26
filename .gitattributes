@@ -1,6 +1,3 @@
 *.html linguist-vendored=false
-.project linguist-vendored
-Blockly linguist-vendored
-querypath-3.0.3 linguist-vendored
-fancybox linguist-vendored
-
+.project linguist-vendored=true
+Blockly/* linguist-vendored=true
