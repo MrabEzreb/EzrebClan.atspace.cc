@@ -1,14 +1,13 @@
 package com.ezreb.htmlEditor.window.testing;
 
-import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 import java.io.IOException;
@@ -16,11 +15,17 @@ import java.util.Calendar;
 
 import javax.imageio.ImageIO;
 
-@SuppressWarnings("serial")
-public class TestElement extends Canvas {
+import com.ezreb.htmlEditor.config.Resolution;
 
+@SuppressWarnings("serial")
+public class TestElement extends TestCanvasPB {
+
+	public static Dimension size;
 	public TestElement() {
 		this.setPreferredSize(new Dimension(50, 50));
+		this.setSize(50, 50);
+		System.out.println("created");
+		System.out.println(this.getLocation());
 		try {
 			this.im = ImageIO.read(TestElement.class.getResourceAsStream("/com/ezreb/htmlEditor/window/testing/images/img.png"));
 		} catch (IOException e) {
@@ -50,21 +55,40 @@ public class TestElement extends Canvas {
 //			}
 //		});
 	}
+	public TestElement(TestCanvasPB creator) {
+		this();
+		this.creator = creator;
+		addMouseListener(ml);
+		System.out.println("test");
+	}
 	public Image im;
 	public boolean moving = false;
+	private TestCanvasPB creator;
+	private MouseListener ml = new MouseAdapter() {
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			super.mouseReleased(e);
+			TestElement.this.creator.setVisible(true);
+			TestElement.this.removeMouseListener(ml);
+			System.out.println("clicked");
+		}
+	};
 	MouseMotionListener mml = new MouseMotionAdapter() {
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			// TODO Auto-generated method stub
 			super.mouseDragged(e);
-			TestElement.this.setLocation(e.getX()-25, e.getY()-25);
-			System.out.println(e.getPoint().toString());
+			Point e2 = TestElement.this.getParent().getMousePosition();
+			TestElement.this.setLocation((int)e2.getX()-25, (int)e2.getY()-25);
 		}
 	};
 	@Override
 	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
-		((Graphics2D) this.getGraphics()).drawImage(im, 0, 0, 50, 50, this);
+		size = Resolution.resize(new Dimension(59, 59), TestWindow.size);
+		this.setSize(size);
+		this.setPreferredSize(size);
+		((Graphics2D) this.getGraphics()).drawImage(im, 0, 0, size.width, size.height, this);
 	}
 	public synchronized void stopMoving() {
 		System.out.println(Calendar.getInstance().get(Calendar.MILLISECOND));
