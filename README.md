@@ -12,13 +12,4 @@ But, nonetheless, if you want to keep up with the progress, you should do three 
 
 Just remember, the dev server is for development, it's kindof like a beta server, and any private servers that I host myself will be alpha just for me and possibly a select few.
 
-So, if you really really really want to see the dev server, just remember a few things:
-
-1. It is subject to change
-2. The databases are subject to be wiped
-3. The webhost does put ads on the site every once in a while :P
-4. If something doesn't work, make an issue on this repo.
-
-The dev server is located at EzrebClan.webdua.com
-
 Thanks for reading! Bye!
