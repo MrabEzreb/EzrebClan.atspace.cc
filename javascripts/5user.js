@@ -35,7 +35,7 @@ function openDropdown() {
     if (window.sessionStorage.getItem("YTLink") === "") {
     	link.appendChild(document.createTextNode("Signup"));
 	    link.setAttribute("role", "menuitem");
-	    link.href = fillInLinkStr("/SQL/signup.html");
+	    link.href = fillInLinkStr("/Account/Signup");
     } else {
 	    link.appendChild(document.createTextNode(window.sessionStorage.getItem("username")));
 	    link.setAttribute("role", "menuitem");
@@ -46,13 +46,20 @@ function openDropdown() {
     if (window.sessionStorage.getItem("YTLink") === "") {
     	link.appendChild(document.createTextNode("Login"));
 	    link.setAttribute("role", "menuitem");
-	    link.href = fillInLinkStr("/SQL/login.html");
+	    link.href = fillInLinkStr("/Account/Login");
     } else {
 	    link.appendChild(document.createTextNode("Youtube"));
 	    link.setAttribute("role", "menuitem");
 	    link.href = window.sessionStorage.getItem("YTLink");
 	}
     text.appendChild(link);
+    if (window.sessionStorage.getItem("YTLink") !== "") {
+        link = document.createElement("a");
+        link.appendChild(document.createTextNode("Signout"));
+        link.setAttribute("role", "menuitem");
+        link.href = fillInLinkStr("/Account/Signout");
+        text.appendChild(link);
+    }
     text.style.textAlign = "center";
     userPanel.appendChild(text);
     body = document.getElementsByTagName("nav")[0];
@@ -101,7 +108,7 @@ function grabData() {
 }
 function generateButton() {
     "use strict";
-    var button, username, text, image, nav, p;
+    var button, username, text, image, navPills, p, nav, row, colsm12;
     //testingData();
     grabData();
     username = window.sessionStorage.getItem("username");
@@ -115,7 +122,10 @@ function generateButton() {
     text = document.createTextNode("Welcome, \r" + username);
     image = document.createElement("img");
     image.src = window.sessionStorage.getItem("profileImSrc");
-    nav = document.getElementsByTagName("nav")[0].getElementsByClassName("row")[0].getElementsByClassName("col-sm-12")[0].getElementsByClassName("nav nav-pills")[0];
+    nav = document.getElementsByTagName("nav")[0];
+    row = nav.getElementsByClassName("row")[0];
+    colsm12 = row.getElementsByClassName("col-sm-12")[0];
+    navPills = colsm12.getElementsByClassName("nav nav-pills")[0];
     image.style.height = "40px";
     image.className = "pull-left";
     button.style.height = "40px";
@@ -128,6 +138,6 @@ function generateButton() {
     button.appendChild(image);
     button.appendChild(p);
     button.style.float = "right";
-    nav.appendChild(button);
+    navPills.appendChild(button);
 }
 generateButton();

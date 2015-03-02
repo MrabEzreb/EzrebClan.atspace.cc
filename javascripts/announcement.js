@@ -1,9 +1,8 @@
-var h1 = "Test1";
-var p1 = "Test2";
+var h1 = "Test";
+var p1 = "Notice: If stuff doesn't load, please refresh the page.";
 function setAnnouncement() {
     "use strict";
     document.getElementById("announcementh").innerHTML = h1;
-    
     document.getElementById("announcementh").style.display = "in-line";
     document.getElementById("announcementh").style.backgroundColor = "green";
     document.getElementById("announcementh").style.color = "white";
@@ -11,15 +10,15 @@ function setAnnouncement() {
     document.getElementById("announcementp").style.display = "in-line";
     document.getElementById("announcementp").style.backgroundColor = "green";
     document.getElementById("announcementp").style.color = "white";
+    document.getElementById("announcement").style.display = "block";
     document.getElementById("announcement").style.backgroundColor = "red";
+    document.getElementById("announcement").style.textAlign = "center";
 }
 function loadAnnouncement() {
     "use strict";
-    var announce, announcement, row, cols, h, p;
-    announce = document.getElementsByTagName("announcement");
-    announcement = document.createElement("div");
-    announce[0].id = "announcement";
-    announcement.className = "Announcement";
+    var announce, row, cols, h, p;
+    announce = document.getElementsByTagName("announcement")[0];
+    announce.id = "announcement";
     row = document.createElement("div");
     cols = document.createElement("div");
     row.className = "row";
@@ -31,10 +30,7 @@ function loadAnnouncement() {
     cols.appendChild(h);
     cols.appendChild(p);
     row.appendChild(cols);
-    announce[0].setAttribute("style", "background-color: \"red\"; text-align: center;");
-    announce[0].style.backgroundColor = "rgb(255, 0, 0)";
-    announcement.appendChild(row);
-    announce[0].appendChild(announcement);
+    announce.appendChild(row);
     setAnnouncement();
 }
-loadAnnouncement();
+window.onload = loadAnnouncement;

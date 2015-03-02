@@ -144,7 +144,7 @@ mrabClan = [getNavElement("Home", "/EzrebClan/MrabEzreb"), getNavElement("YouTub
 
 profileBuilder = [getNavElement("Main Site", "/"), getNavElement("Save", "save.php")];
 
-account = [getNavElement("Main Site", "/"), getNavElement("Login", "/SQL/login.html"), getNavElement("Signup", "/SQL/signup.html")];
+account = [getNavElement("Main Site", "/"), getNavElement("Login", "/Account/Login"), getNavElement("Signup", "/Account/Signup")];
 
 mainNav = [getNavElement("Primary", "/"), getNavElement("Social", "/Social"), getNavElement("Minecraft Minimap", "/map_rdir.html"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop)];
 function getArray(navObject) {

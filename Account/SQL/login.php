@@ -18,6 +18,13 @@
         <?php
             $User = $_POST["username"];
             $Pass = $_POST["password"];
+            $Store = $_POST["store"];
+            // Alpha Server
+//            $servername = "127.0.0.1";
+//            $username = "root";
+//            $password = "4edxz7yhbn";
+//            $db = "alphatesting1";
+            // Beta Server
             $servername = "mysql14.000webhost.com";
             $username = "a9340268_test";
             $password = "4edxz7yhbn";
@@ -41,7 +48,11 @@
             echo "<br>You can now return to the main site";
             $image = $chosen['image'];
             $user = $chosen['username'];
-            $funcrun = "<script>\n window.localStorage.setItem(\"profileImSrc\", \"${image}\");\n window.localStorage.setItem(\"username\", \"${user}\");\n window.localStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.localStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
+            if ($Store == true) {
+                $funcrun = "<script>\n window.localStorage.setItem(\"profileImSrc\", \"${image}\");\n window.localStorage.setItem(\"username\", \"${user}\");\n window.localStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.localStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
+            } else {
+                $funcrun = "<script>\n window.sessionStorage.setItem(\"profileImSrc\", \"${image}\");\n window.sessionStorage.setItem(\"username\", \"${user}\");\n window.sessionStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.sessionStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
+            }
             echo $funcrun;
             echo "<meta http-equiv=\"refresh\" content=\"0; url=../../\">";
             $conn = null;

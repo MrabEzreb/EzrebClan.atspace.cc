@@ -3,14 +3,17 @@
     <head><script src="../../javascripts/scriptLoader.js"></script><link href="../../stylesheets/form.css" rel="stylesheet"></head>
     <body>
         <announcement></announcement>
-        <nav array="account" active=1></nav>
+        <nav array="account" active=2></nav>
         <div id="form">
-            <form action="../SQL/login.php" method="post" name="login">
+            <form action="../SQL/signup.php" method="post" name="signup">
+                Name:<br>
+                <input type="text" name="name"><br>
+                Email:<br>
+                <input type="email" name="email"><br>
                 Username:<br>
                 <input type="text" name="username"><br>
                 Password:<br>
                 <input type="password" name="password"><br>
-                <input type="checkbox" name="store">Stay Logged In?<br><br>
                 <input type="submit" value="Submit" id="sub">
             </form>
         </div>

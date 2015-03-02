@@ -39,9 +39,9 @@ function loadScripts() {
 	addScript("/javascripts/1jquery.js");
 	addScript("/javascripts/3link.js");
 	addScript("/javascripts/4navBar.js");
+	addScript("/javascripts/5user.js");
 	addScript("/javascripts/announcement.js");
 	addScript("/javascripts/dropdown.js");
-	addScript("/javascripts/user.js");
 	addStyle("/stylesheets/bootstrap.css");
 	addStyle("/stylesheets/bootstrap-theme.css");
 	addStyle("/stylesheets/index.css");
