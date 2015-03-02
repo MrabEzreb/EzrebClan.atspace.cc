@@ -126,9 +126,9 @@ var account, mainNav, mainGamesDrop, ezrebPackNav, dndNav, ezrebClanNav, mainCla
 
 ezrebClanNav = [getNavElement("Mrab Ezreb", "/EzrebClan/MrabEzreb"), getNavElement("AdamPlaysVideoGames", "/EzrebClan/AdamPlaysVideoGames"), getNavElement("Main Site", "/")];
 
-ezrebPackNav = [getNavElement("EzrebPack", "/EzrebPack"), getNavElement("Download", "/EzrebPack/downloads.html"), getNavElement("Main Site", "/")];
+ezrebPackNav = [getNavElement("EzrebPack", "/EzrebPack"), getNavElement("Download", "/EzrebPack/Downloads"), getNavElement("Main Site", "/")];
 
-dndNav = [getNavElement("Dnd Toolkit", "/Dnd"), getNavElement("Download", "/Dnd/downloads.html"), getNavElement("Main Site", "/")];
+dndNav = [getNavElement("Dnd Toolkit", "/Dnd"), getNavElement("Download", "/Dnd/Downloads"), getNavElement("Main Site", "/")];
 
 mainGamesDrop = [getNavElement("Dnd", "/Dnd"), getNavElement("EzrebPack", "/EzrebPack")];
 
@@ -146,7 +146,7 @@ profileBuilder = [getNavElement("Main Site", "/"), getNavElement("Save", "save.p
 
 account = [getNavElement("Main Site", "/"), getNavElement("Login", "/SQL/login.html"), getNavElement("Signup", "/SQL/signup.html")];
 
-mainNav = [getNavElement("Primary", "/"), getNavElement("Social", "/social.html"), getNavElement("Minecraft Minimap", "/map_rdir.html"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop)];
+mainNav = [getNavElement("Primary", "/"), getNavElement("Social", "/Social"), getNavElement("Minecraft Minimap", "/map_rdir.html"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop)];
 function getArray(navObject) {
     "use strict";
     var name, active;
