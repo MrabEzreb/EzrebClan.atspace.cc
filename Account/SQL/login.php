@@ -19,16 +19,17 @@
             $User = $_POST["username"];
             $Pass = $_POST["password"];
             $Store = $_POST["store"];
+            $OriginalURL = $_POST["url"];
             // Alpha Server
-//            $servername = "127.0.0.1";
-//            $username = "root";
-//            $password = "4edxz7yhbn";
-//            $db = "alphatesting1";
-            // Beta Server
-            $servername = "mysql14.000webhost.com";
-            $username = "a9340268_test";
+            $servername = "127.0.0.1";
+            $username = "root";
             $password = "4edxz7yhbn";
-            $db = "a9340268_test";
+            $db = "alphatesting1";
+//            // Beta Server
+//            $servername = "mysql14.000webhost.com";
+//            $username = "a9340268_test";
+//            $password = "4edxz7yhbn";
+//            $db = "a9340268_test";
             try {
                 $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
                 // set the PDO error mode to exception
@@ -54,7 +55,11 @@
                 $funcrun = "<script>\n window.sessionStorage.setItem(\"profileImSrc\", \"${image}\");\n window.sessionStorage.setItem(\"username\", \"${user}\");\n window.sessionStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.sessionStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
             }
             echo $funcrun;
-            echo "<meta http-equiv=\"refresh\" content=\"0; url=../../\">";
+            if ($OriginalURL == null) {
+                echo "<meta http-equiv=\"refresh\" content=\"0; url=../../\">";
+            } else {
+                echo "<meta http-equiv=\"refresh\" content=\"0; url=$OriginalURL\">";
+            }
             $conn = null;
         ?>
         

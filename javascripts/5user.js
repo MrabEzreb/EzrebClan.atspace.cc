@@ -31,7 +31,10 @@ function openDropdown() {
     userPanel = document.createElement("ul");
     userPanel.className = "dropdown-menu userPanel";
     text = document.createElement("li");
+    text.style.height = "26px";
+    text.style.textAlign = "center";
     link = document.createElement("a");
+    link.style.top = "0px";
     if (window.sessionStorage.getItem("YTLink") === "") {
     	link.appendChild(document.createTextNode("Signup"));
 	    link.setAttribute("role", "menuitem");
@@ -42,6 +45,10 @@ function openDropdown() {
 	    link.href = window.sessionStorage.getItem("HomeLink");
 	}
     text.appendChild(link);
+    userPanel.appendChild(text);
+    text = document.createElement("li");
+    text.style.height = "26px";
+    text.style.textAlign = "center";
     link = document.createElement("a");
     if (window.sessionStorage.getItem("YTLink") === "") {
     	link.appendChild(document.createTextNode("Login"));
@@ -54,6 +61,10 @@ function openDropdown() {
 	}
     text.appendChild(link);
     if (window.sessionStorage.getItem("YTLink") !== "") {
+        userPanel.appendChild(text);
+        text = document.createElement("li");
+        text.style.height = "26px";
+        text.style.textAlign = "center";
         link = document.createElement("a");
         link.appendChild(document.createTextNode("Signout"));
         link.setAttribute("role", "menuitem");
@@ -64,12 +75,12 @@ function openDropdown() {
     userPanel.appendChild(text);
     body = document.getElementsByTagName("nav")[0];
     userPanel.style.position = "relative";
+    userPanel.style.float = "none";
     userPanel.style.right = "100%";
     userPanel.style.left = "0%";
-    userPanel.style.height = "120px";
-    userPanel.style.width = "inherit";
     userPanel.style.display = "block";
     userPanel.style.zIndex = "6";
+    userPanel.style.top = "40px";
     userPanel.style.backgroundColor = "white";
     userButton.appendChild(userPanel);
 }
@@ -108,7 +119,7 @@ function grabData() {
 }
 function generateButton() {
     "use strict";
-    var button, username, text, image, navPills, p, nav, row, colsm12;
+    var button, username, text, text2, br, image, navPills, p, nav, row, colsm12;
     //testingData();
     grabData();
     username = window.sessionStorage.getItem("username");
@@ -117,9 +128,10 @@ function generateButton() {
     button.onclick = toggleDrop;
     button.onpaste = openDropdown;
     button.id = "user";
-    button.style.width = "auto";
     button.setAttribute("data-toggle", "dropdown");
-    text = document.createTextNode("Welcome, \r" + username);
+    text = document.createTextNode("Welcome, ");
+    br = document.createElement("br");
+    text2 = document.createTextNode(username);
     image = document.createElement("img");
     image.src = window.sessionStorage.getItem("profileImSrc");
     nav = document.getElementsByTagName("nav")[0];
@@ -127,17 +139,22 @@ function generateButton() {
     colsm12 = row.getElementsByClassName("col-sm-12")[0];
     navPills = colsm12.getElementsByClassName("nav nav-pills")[0];
     image.style.height = "40px";
-    image.className = "pull-left";
+    image.style.float = "left";
+    image.style.paddingRight = "20px";
     button.style.height = "40px";
     p = document.createElement("p");
     p.appendChild(text);
+    p.appendChild(br);
+    p.appendChild(text2);
     p.style.verticalAlign = "middle";
     p.style.textAlign = "center";
     p.style.fontSize = "15px";
     p.style.lineHeight = "18px";
+    p.style.float = "right";
     button.appendChild(image);
     button.appendChild(p);
     button.style.float = "right";
+    button.style.width = "auto";
     navPills.appendChild(button);
 }
 generateButton();

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head><script src="../../javascripts/scriptLoader.js"></script><link href="../../stylesheets/form.css" rel="stylesheet"></head>
+    <body>
+        <announcement></announcement>
+        <nav array="main" active=0></nav>
+        <form id="form" action="../SQL/changeImage.php" method="post" name="changeImage">
+            Image URL:<br>
+            <input type="url" name="image" value="test"><br>
+            <input id="userin" name="user" type="text" hidden="hidden"><br>
+            <script>
+                var userIn;
+                userIn = document.getElementById("userin");
+                userIn.setAttribute("value", window.sessionStorage.getItem("username"));
+            </script>
+            <input type="submit" value="Submit" id="sub">
+        </form>
+    </body>
+</html>

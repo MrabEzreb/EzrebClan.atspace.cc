@@ -30,7 +30,9 @@
             $stmt->setFetchMode(PDO::FETCH_ASSOC); 
             $result = $stmt->fetchAll();
             $number = count($result);
-            if ($number > 0) {
+            if ($User == "Guest") {
+                echo "You can not create an account with the username 'Guest'";
+            } elseif ($number > 0) {
                 echo "There is already an account with that email.";
             } else {
                 $stmt2 = $conn->prepare("SELECT name FROM Profiles WHERE username='$User';"); 
