@@ -45,3 +45,15 @@
 
 #githubcode {
 }
+
+
+thought {
+    font-size: 10px;
+}
+
+.side-heading-left {
+    transform: rotate(-35deg) translateY(-75px);
+}
+.side-heading-right {
+    transform: rotate(35deg) translateY(-75px);
+}

@@ -24,63 +24,74 @@ function testingData() {
 }
 function openDropdown() {
     "use strict";
-    var userButton, userPanel, body, text, link, currentURL, startOfURLIndex;
+    var userButton, userPanel, body, text, link, currentURL, startOfURLIndex, text2, text3, link2, link3;
     currentURL = window.document.URL;
     startOfURLIndex = currentURL.indexOf("/");
     userButton = document.getElementsByTagName("button")[0];
     userPanel = document.createElement("ul");
     userPanel.className = "dropdown-menu userPanel";
+    userPanel.style.textAlign = "center";
     text = document.createElement("li");
-    text.style.height = "26px";
-    text.style.textAlign = "center";
     link = document.createElement("a");
-    link.style.top = "0px";
-    if (window.sessionStorage.getItem("YTLink") === "") {
+    link.style.clear = "none";
+    link.style.position = "relative";
+    text.style.textAlign = "center";
+    text.style.clear = "none";
+    if (window.sessionStorage.getItem("YTLink") === null) {
     	link.appendChild(document.createTextNode("Signup"));
 	    link.setAttribute("role", "menuitem");
 	    link.href = fillInLinkStr("/Account/Signup");
     } else {
 	    link.appendChild(document.createTextNode(window.sessionStorage.getItem("username")));
 	    link.setAttribute("role", "menuitem");
-	    link.href = window.sessionStorage.getItem("HomeLink");
+	    link.href = fillInLinkStr(window.sessionStorage.getItem("HomeLink"));
 	}
     text.appendChild(link);
     userPanel.appendChild(text);
-    text = document.createElement("li");
-    text.style.height = "26px";
-    text.style.textAlign = "center";
-    link = document.createElement("a");
-    if (window.sessionStorage.getItem("YTLink") === "") {
-    	link.appendChild(document.createTextNode("Login"));
-	    link.setAttribute("role", "menuitem");
-	    link.href = fillInLinkStr("/Account/Login");
+    text2 = document.createElement("li");
+    link2 = document.createElement("a");
+    link2.style.clear = "none";
+    if (window.sessionStorage.getItem("YTLink") === null) {
+    	link2.appendChild(document.createTextNode("Login"));
+	    link2.setAttribute("role", "menuitem");
+	    link2.href = fillInLinkStr("/Account/Login");
     } else {
-	    link.appendChild(document.createTextNode("Youtube"));
-	    link.setAttribute("role", "menuitem");
-	    link.href = window.sessionStorage.getItem("YTLink");
+	    link2.appendChild(document.createTextNode("Youtube"));
+	    link2.setAttribute("role", "menuitem");
+	    link2.href = window.sessionStorage.getItem("YTLink");
 	}
-    text.appendChild(link);
-    if (window.sessionStorage.getItem("YTLink") !== "") {
-        userPanel.appendChild(text);
-        text = document.createElement("li");
-        text.style.height = "26px";
-        text.style.textAlign = "center";
-        link = document.createElement("a");
-        link.appendChild(document.createTextNode("Signout"));
-        link.setAttribute("role", "menuitem");
-        link.href = fillInLinkStr("/Account/Signout");
-        text.appendChild(link);
+    text2.appendChild(link2);
+    userPanel.appendChild(text2);
+    if (window.sessionStorage.getItem("YTLink") !== null) {
+        var text4 = document.createElement("li");
+        var link4 = document.createElement("a");
+        text4.style.height = "26px";
+        link4.style.textAlign = "center";
+        link4.style.clear = "none";
+        link4.appendChild(document.createTextNode("Account Settings"));
+        link4.setAttribute("role", "menuitem");
+        link4.href = fillInLinkStr("/Account/Settings");
+        text4.appendChild(link4);
+        userPanel.appendChild(text4);
+        text3 = document.createElement("li");
+        link3 = document.createElement("a");
+        text3.style.height = "26px";
+        link3.style.textAlign = "center";
+        link3.style.clear = "none";
+        link3.appendChild(document.createTextNode("Signout"));
+        link3.setAttribute("role", "menuitem");
+        link3.href = fillInLinkStr("/Account/Signout");
+        text3.appendChild(link3);
+        userPanel.appendChild(text3);
     }
-    text.style.textAlign = "center";
-    userPanel.appendChild(text);
     body = document.getElementsByTagName("nav")[0];
     userPanel.style.position = "relative";
+    userPanel.style.height = "auto";
     userPanel.style.float = "none";
     userPanel.style.right = "100%";
     userPanel.style.left = "0%";
     userPanel.style.display = "block";
     userPanel.style.zIndex = "6";
-    userPanel.style.top = "40px";
     userPanel.style.backgroundColor = "white";
     userButton.appendChild(userPanel);
 }
@@ -114,8 +125,14 @@ function grabData() {
 	    window.sessionStorage.setItem("profileImSrc", "");
 	    window.sessionStorage.setItem("username", "Guest");
 	    window.sessionStorage.setItem("HomeLink", "/");
-	    window.sessionStorage.setItem("YTLink", "");
-	}
+	} else if(window.sessionStorage.getItem("username") === "Guest") {
+	    window.sessionStorage.setItem("profileImSrc", "");
+	    window.sessionStorage.setItem("username", "Guest");
+	    window.sessionStorage.setItem("HomeLink", "/");
+	} else {
+	    window.sessionStorage.setItem("HomeLink", "/EzrebClan/AdamPlaysVideoGames");
+	    window.sessionStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb");
+    }       
 }
 function generateButton() {
     "use strict";
@@ -139,7 +156,7 @@ function generateButton() {
     colsm12 = row.getElementsByClassName("col-sm-12")[0];
     navPills = colsm12.getElementsByClassName("nav nav-pills")[0];
     image.style.height = "40px";
-    image.style.float = "left";
+    image.style.left = "0px";
     image.style.paddingRight = "20px";
     button.style.height = "40px";
     p = document.createElement("p");
@@ -154,6 +171,7 @@ function generateButton() {
     button.appendChild(image);
     button.appendChild(p);
     button.style.float = "right";
+    button.style.right = "0px";
     button.style.width = "auto";
     navPills.appendChild(button);
 }

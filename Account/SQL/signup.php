@@ -43,9 +43,10 @@
                 if ($number2 > 0) {
                     echo "There is already an account with that username.";
                 } else {
-                    $hashcode = uniqid('ezreb_', true);
+                    $ezrebPrefix = "ezreb_";
+                    $hashcode = rand(0, 16581375);
                     $sql = "INSERT INTO Profiles
-                        VALUES ('$Name', '$Email', '$User', '$Pass', false, '$hashcode', '')";
+                        VALUES ($hashcode, '$Name', '$Email', '$User', '$Pass', false, '$ezrebPrefix"."$hashcode', '', 'false')";
                     $conn->exec($sql);
                 }
             }

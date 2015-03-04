@@ -122,7 +122,7 @@ function loadFullNav(navArray, active) {
         list.appendChild(navArray[i]);
     }
 }
-var account, mainNav, mainGamesDrop, ezrebPackNav, dndNav, ezrebClanNav, mainClanAdamSlide, mainClanDrop, mainClanMrabSlide, adamClan, mrabClan, profileBuilder;
+var account, mainNav, mainGamesDrop, ezrebPackNav, dndNav, ezrebClanNav, mainClanAdamSlide, mainClanDrop, mainClanMrabSlide, adamClan, mrabClan, profileBuilder, hostedDataMain, hostedDataTime;
 
 ezrebClanNav = [getNavElement("Mrab Ezreb", "/EzrebClan/MrabEzreb"), getNavElement("AdamPlaysVideoGames", "/EzrebClan/AdamPlaysVideoGames"), getNavElement("Main Site", "/")];
 
@@ -146,7 +146,11 @@ profileBuilder = [getNavElement("Main Site", "/"), getNavElement("Save", "save.p
 
 account = [getNavElement("Main Site", "/"), getNavElement("Login", "/Account/Login"), getNavElement("Signup", "/Account/Signup")];
 
-mainNav = [getNavElement("Primary", "/"), getNavElement("Social", "/Social"), getNavElement("Minecraft Minimap", "/map_rdir.html"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop)];
+hostedDataTime = [getNavElement("Date", "/data/date"), getNavElement("Time", "/data/time")];
+
+hostedDataMain = [getNavElement("Main Site", "/"), getNavElement("Hosted Data Home", "/data"), getNavDrop("Date & Time", hostedDataTime)];
+
+mainNav = [getNavElement("Primary", "/"), getNavElement("Social", "/Social"), getNavElement("Minecraft Minimap", "/map_rdir.html"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop), getNavElement("Ezreb Clan Hosted Data", "/data")];
 function getArray(navObject) {
     "use strict";
     var name, active;
@@ -176,6 +180,9 @@ function getArray(navObject) {
     } else if (name === "account") {
     	account[active].className = "active";
     	return account;
+    } else if (name === "data") {
+        hostedDataMain[active].className = "active";
+        return hostedDataMain;
     }
 }
 function insertToElem() {

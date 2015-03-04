@@ -5,7 +5,7 @@
             function run() {
                 window.alert("test");
                 window.localStorage.setItem("profileImSrc", "image");
-                window.localStorage.setItem("username", "username"});
+                window.localStorage.setItem("username", "username");
                 window.localStorage.setItem("HomeLink", "/EzrebClan/AdamPlaysVideoGames");
                 window.localStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb);
             }
@@ -21,10 +21,11 @@
             $Store = $_POST["store"];
             $OriginalURL = $_POST["url"];
             // Alpha Server
-            $servername = "127.0.0.1";
-            $username = "root";
+            $servername2 = "mysql.freehostingnoads.net";
+            $servername = "localhost";
+            $username = "u836306365_mrab";
             $password = "4edxz7yhbn";
-            $db = "alphatesting1";
+            $db = "u836306365_data";
 //            // Beta Server
 //            $servername = "mysql14.000webhost.com";
 //            $username = "a9340268_test";
@@ -37,28 +38,41 @@
                 }
             catch(PDOException $e)
                 {
-                echo "Connection failed: " . $e->getMessage();
+                $conn = new PDO("mysql:host=$servername2;dbname=$db", $username, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 }
-            $stmt = $conn->prepare("SELECT name, email, hash, image, username FROM Profiles WHERE Username='$User' AND Password='$Pass';"); 
+            $stmt = $conn->prepare("SELECT name, email, hash, image, username FROM profiles WHERE Username='$User' AND Password='$Pass';"); 
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC); 
             $result = $stmt->fetchAll();
-            $chosen = $result[0];
-            echo "Your name is ".$result[0]['name']." and your email is ".$result[0]['email'];
-            echo "<br>Your hashcode is ".$result[0]['hash'];
-            echo "<br>You can now return to the main site";
-            $image = $chosen['image'];
-            $user = $chosen['username'];
-            if ($Store == true) {
-                $funcrun = "<script>\n window.localStorage.setItem(\"profileImSrc\", \"${image}\");\n window.localStorage.setItem(\"username\", \"${user}\");\n window.localStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.localStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
+            $number = count($result);
+            if ($number < 1) {
+                echo "Incorrect Details, please go back.";
+                $scripted = <<<EOD
+<script>
+window.sessionStorage.setItem("incorrect", "true");
+</script>
+<meta http-equiv="refresh" content="0; url=$OriginalURL">
+EOD;
+                echo $scripted;
             } else {
-                $funcrun = "<script>\n window.sessionStorage.setItem(\"profileImSrc\", \"${image}\");\n window.sessionStorage.setItem(\"username\", \"${user}\");\n window.sessionStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.sessionStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
-            }
-            echo $funcrun;
-            if ($OriginalURL == null) {
-                echo "<meta http-equiv=\"refresh\" content=\"0; url=../../\">";
-            } else {
-                echo "<meta http-equiv=\"refresh\" content=\"0; url=$OriginalURL\">";
+                $chosen = $result[0];
+                echo "Your name is ".$result[0]['name']." and your email is ".$result[0]['email'];
+                echo "<br>Your hashcode is ".$result[0]['hash'];
+                echo "<br>You can now return to the main site";
+                $image = $chosen['image'];
+                $user = $chosen['username'];
+                if ($Store == true) {
+                    $funcrun = "<script>\n window.localStorage.setItem(\"profileImSrc\", \"${image}\");\n window.localStorage.setItem(\"username\", \"${user}\");\n window.localStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.localStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
+                } else {
+                    $funcrun = "<script>\n window.sessionStorage.setItem(\"profileImSrc\", \"${image}\");\n window.sessionStorage.setItem(\"username\", \"${user}\");\n window.sessionStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.sessionStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
+                }
+                echo $funcrun;
+                if ($OriginalURL == null) {
+                    echo "<meta http-equiv=\"refresh\" content=\"0; url=../../\">";
+                } else {
+                    echo "<meta http-equiv=\"refresh\" content=\"0; url=../../\">";
+                }
             }
             $conn = null;
         ?>

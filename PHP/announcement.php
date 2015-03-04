@@ -5,7 +5,8 @@
             $fhName = "../BTS/announcementh.txt";
             $fpName = "../BTS/announcementp.txt";
             $JSName = "../javascripts/announcement.js";
-            $OldJS = "function setAnnouncement() {
+            $OldJS = "
+function setAnnouncement() {
     \"use strict\";
     document.getElementById(\"announcementh\").innerHTML = h1;
 
@@ -17,11 +18,14 @@
     document.getElementById(\"announcementp\").style.backgroundColor = \"green\";
     document.getElementById(\"announcementp\").style.color = \"white\";
     document.getElementById(\"announcement\").style.backgroundColor = \"red\";
-    }
-    function loadAnnouncement() {
+    document.getElementById(\"announcement\").style.textAlign = \"center\";
+    document.getElementById(\"announcement\").style.display = \"block\";
+}
+function loadAnnouncement() {
     \"use strict\";
     var announce, row, cols, h, p;
     announce = document.getElementsByTagName(\"announcement\");
+    announce[0].id = \"announcement\";
     row = document.createElement(\"div\");
     cols = document.createElement(\"div\");
     row.className = \"row\";
@@ -36,12 +40,12 @@
     announce[0].style = \"background-color: red; text-align: center;\";
     announce[0].appendChild(row);
     setAnnouncement();
-    }
-    window.onload = loadAnnouncement;";
+}
+loadAnnouncement();";
            $fhFile = fopen($fhName, "r");
            $fpFile = fopen($fpName, "r");
-           $JSH = "var h1 = \"".fread($fhFile, filesize($fhName)-1)."\";\n";
-           $JSP = "var p1 = \"".fread($fpFile, filesize($fpName)-1)."\";\n";
+           $JSH = "var h1 = \"".fread($fhFile, filesize($fhName)-2)."\";\n";
+           $JSP = "var p1 = \"".fread($fpFile, filesize($fpName)-2)."\";\n";
            $JSFinal = $JSH.$JSP.$OldJS;
            fclose($fhFile);
            fclose($fpFile);
