@@ -6,7 +6,8 @@
         <nav array="main" active=0></nav>
         <form id="form" action="../SQL/changeImage.php" method="post" name="changeImage">
             Image URL:<br>
-            <input type="url" name="image" value="test"><br>
+            Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload">
             <input id="userin" name="user" type="text" hidden="hidden"><br>
             <script>
                 var userIn;

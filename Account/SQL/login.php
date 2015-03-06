@@ -23,14 +23,19 @@
             // Alpha Server
             $servername2 = "mysql.freehostingnoads.net";
             $servername = "localhost";
-            $username = "u836306365_mrab";
+            $username = "root";
             $password = "4edxz7yhbn";
-            $db = "u836306365_data";
+            $db = "alphatesting1";
 //            // Beta Server
 //            $servername = "mysql14.000webhost.com";
 //            $username = "a9340268_test";
 //            $password = "4edxz7yhbn";
 //            $db = "a9340268_test";
+            // Grendle Server
+//            $servername = "mysql.grendelhosting.com";
+//            $username = "u616060026_live";
+//            $password = "4edxz7yhbn";
+//            $db = "u616060026_live";
             try {
                 $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
                 // set the PDO error mode to exception
@@ -63,9 +68,9 @@ EOD;
                 $image = $chosen['image'];
                 $user = $chosen['username'];
                 if ($Store == true) {
-                    $funcrun = "<script>\n window.localStorage.setItem(\"profileImSrc\", \"${image}\");\n window.localStorage.setItem(\"username\", \"${user}\");\n window.localStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.localStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
+                    $funcrun = "<script>\n window.localStorage.setItem(\"profileImSrc\", \"${image}\");\n window.localStorage.setItem(\"username\", \"${user}\");\n window.localStorage.setItem(\"HomeLink\", \"/Profiles/\" + window.localStorage.getItem(\"username\"));\n window.localStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
                 } else {
-                    $funcrun = "<script>\n window.sessionStorage.setItem(\"profileImSrc\", \"${image}\");\n window.sessionStorage.setItem(\"username\", \"${user}\");\n window.sessionStorage.setItem(\"HomeLink\", \"/EzrebClan/AdamPlaysVideoGames\");\n window.sessionStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
+                    $funcrun = "<script>\n window.sessionStorage.setItem(\"profileImSrc\", \"${image}\");\n window.sessionStorage.setItem(\"username\", \"${user}\");\n window.sessionStorage.setItem(\"HomeLink\", \"/Profiles/\" + window.sessionStorage.getItem(\"username\"));\n window.sessionStorage.setItem(\"YTLink\", \"https://youtube.com/c/MrabEzreb\");\n</script>\n";
                 }
                 echo $funcrun;
                 if ($OriginalURL == null) {

@@ -119,7 +119,7 @@ function grabData() {
 	if(window.localStorage.getItem("username") !== null) {
 	    window.sessionStorage.setItem("profileImSrc", window.localStorage.getItem("profileImSrc"));
 	    window.sessionStorage.setItem("username", window.localStorage.getItem("username"));
-	    window.sessionStorage.setItem("HomeLink", "/EzrebClan/AdamPlaysVideoGames");
+	    window.sessionStorage.setItem("HomeLink", "/Profiles/" + window.localStorage.getItem("username"));
 	    window.sessionStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb");
   	} else if(window.sessionStorage.getItem("username") === null) {
 	    window.sessionStorage.setItem("profileImSrc", "");
@@ -130,7 +130,7 @@ function grabData() {
 	    window.sessionStorage.setItem("username", "Guest");
 	    window.sessionStorage.setItem("HomeLink", "/");
 	} else {
-	    window.sessionStorage.setItem("HomeLink", "/EzrebClan/AdamPlaysVideoGames");
+	    window.sessionStorage.setItem("HomeLink", "/Profiles/" + window.sessionStorage.getItem("username"));
 	    window.sessionStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb");
     }       
 }
