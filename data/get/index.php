@@ -41,7 +41,22 @@ $refTime = <<<EOD
 EOD;
 $time = <<<EOD
 <?php
-
+if (array_key_exists("24hour", \$_GET)) {
+    switch (\$_GET["24hour"]) {
+        case: "false":
+            date_default_timezone_set('America/New_York');
+            echo date("h:i:s a");
+            break;
+        case: "true":
+            date_default_timezone_set('America/New_York');
+            echo date("h:i:s a");
+            break;
+        }
+    }
+} else {
+    date_default_timezone_set('America/New_York');
+    echo date("h:i:s a");
+}
 ?>
 EOD;
 if (array_key_exists("data", $_GET)) {
@@ -58,7 +73,7 @@ if (array_key_exists("data", $_GET)) {
                 echo $refMain;
             }
             break;
-        case "blue":
+        case "time":
             echo "Your favorite color is blue!";
             break;
         case "green":
