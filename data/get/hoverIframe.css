@@ -1,0 +1,18 @@
+ul.arguments {
+	position: relative;
+	height: 50%;
+	width: 90%;
+}
+ul.arguments > iframe.hidden {
+	display: none;
+}
+ul.arguments > iframe.displayed {
+	position: absolute;
+	right: 40%;
+	left: 40%;
+	top: 12.5%;
+	bottom: 87.5%;
+	width: 60%;
+	height: 75%;
+	display: block;
+}

@@ -146,9 +146,7 @@ profileBuilder = [getNavElement("Main Site", "/"), getNavElement("Save", "save.p
 
 account = [getNavElement("Main Site", "/"), getNavElement("Login", "/Account/Login"), getNavElement("Signup", "/Account/Signup")];
 
-hostedDataTime = [getNavElement("Date", "/data/date"), getNavElement("Time", "/data/time")];
-
-hostedDataMain = [getNavElement("Main Site", "/"), getNavElement("Hosted Data Home", "/data"), getNavDrop("Date & Time", hostedDataTime)];
+hostedDataMain = [getNavElement("Main Site", "/"), getNavElement("Hosted Data Home", "/data"), getNavElement("Refrence Home", "/data/get")];
 
 mainNav = [getNavElement("Primary", "/"), getNavElement("Social", "/Social"), getNavElement("Minecraft Minimap", "/map_rdir.html"), getNavDrop("Games", mainGamesDrop), getNavDrop("EzrebClan", mainClanDrop), getNavElement("Ezreb Clan Hosted Data", "/data")];
 function getArray(navObject) {
