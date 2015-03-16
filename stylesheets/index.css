@@ -53,7 +53,53 @@ thought {
 
 .side-heading-left {
     transform: rotate(-35deg) translateY(-75px);
+    left: 12%;
+    text-align: center;
+    vertical-align: middle;
+}
+.side-left {
+    transform: rotate(-35deg);
+    left: 12%;
+    text-align: center;
+    vertical-align: middle;
+}
+.side-right {
+    transform: rotate(35deg);
+    right: 12%;
+    text-align: center;
+    vertical-align: middle;
 }
 .side-heading-right {
     transform: rotate(35deg) translateY(-75px);
+    right: 12%;
+    text-align: center;
+    vertical-align: middle;
+}
+.center-desc {
+    text-align: center;
+    vertical-align: middle;
+}
+.center {
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+}
+code {
+    text-align: left;
+    left: 15%;
+    right: 15%;
+    position: relative;
+    display: block;
+    width: 70%;
+}
+coder {
+    border-color: green;
+    border-width: thick;
+    border-style: solid;
+    left: 15%;
+    right: 15%;
+    position: relative;
+    display: block;
+    width: 70%;
+    text-align: left;
 }
