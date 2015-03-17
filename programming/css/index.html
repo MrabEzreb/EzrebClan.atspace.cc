@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../../javascripts/scriptLoader.js"></script>
+        <script>
+            var sections = 0;
+            function yes() {
+                "use strict";
+                var no1, yes1, no2, yes2;
+                no1 = document.getElementsByTagName("noanswer")[0];
+                yes1 = document.getElementsByTagName("yesanswer")[0];
+                no1.style.display = "none";
+                yes1.style.display = "block";
+                no2 = document.getElementById("no");
+                yes2 = document.getElementById("yes");
+                no2.style.display = "none";
+            }
+            function no() {
+                "use strict";
+                var no1, yes1, no2, yes2;
+                no1 = document.getElementsByTagName("noanswer")[0];
+                yes1 = document.getElementsByTagName("yesanswer")[0];
+                no1.style.display = "block";
+                yes1.style.display = "none";
+                no2 = document.getElementById("no");
+                yes2 = document.getElementById("yes");
+                yes2.style.display = "none";
+            }
+        </script>
+        <script>
+            function continueOn(inter) {
+                "use strict";
+                var cont, i;
+                for (i = 0; i <= inter; i++) {
+                    cont = document.getElementById("cont" + i);
+                    cont.style.display = "block";
+                }
+                window.localStorage.setItem("cssProgress", "" + inter);
+            }
+            function findLast() {
+                "use strict";
+                var last;
+                last = window.localStorage.getItem("cssProgress");
+                if (last != null) {
+                    last = +last;
+                    yes();
+                    continueOn(last);
+                }
+            }
+            function gotoLast() {
+                "use strict";
+                var last, meta, body;
+                last = window.localStorage.getItem("cssProgress");
+                if (last != null) {
+                    last = +last;
+                    meta = document.createElement("meta");
+                    meta.setAttribute("http-equiv", "refresh");
+                    meta.setAttribute("content", "0; url=#contb" + last);
+                    body = document.getElementsByTagName("body")[0];
+                    body.appendChild(meta);
+                }
+            }
+            window.onload = function() {
+                "use strict";
+                var length, but, i, but2, blocks, book;
+                length = sections;
+                for (i = 0; i <= length; i++) {
+                    but = document.getElementsByTagName("contb" + i)[0];
+                    but2 = document.createElement("button");
+                    but2.setAttribute("style", "background-color: green; height: 40px; width: auto; font-size: 25px;");
+                    but2.setAttribute("onclick", "continueOn(" + i + ");");
+                    but2.appendChild(document.createTextNode("Continue"));
+                    but.appendChild(but2);
+                    book = document.createElement("a");
+                    book.id = "contb" + i;
+                    but.appendChild(book);
+                    blocks = document.getElementsByTagName("cont" + i)[0];
+                    blocks.id = "cont" + i;
+                    blocks.style.display = "none";
+                    blocks.style.textAlign = "center";
+                }
+                findLast();
+            };
+        </script>
+    </head>
+    <body>
+        <announcement></announcement>
+        <nav array="main" active=0></nav>
+        <h2 class="center">Ready to learn some CSS?</h2>
+        <h6 class="center">hint, say yes</h6>
+        <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-1" style="text-align:center;"><button id="yes" onclick="yes();" style="background-color: green; color: red; height: 40px; width: 60px; font-size: 25px;">Yes</button></div>
+            <div class="col-sm-1" style="text-align:center;"><button id="no" onclick="no();" style="background-color: red; color: green; height: 40px; width: 60px; font-size: 25px;">No</button></div>
+            <div class="col-sm-5"></div>
+        </div>
+        <noanswer style="display: none; text-align: center;"><h3>Aww, too bad. :(</h3></noanswer>
+        <yesanswer style="display: none; text-align: center;"><h3>Yay!</h3><br><h5>Press continue buttons to advance.</h5><br><h5>Your progress is automatically saved.</h5><contb0></contb0><br><br><button style="background-color: blue; height: 40px; width: auto; font-size: 25px; color: orange;" onclick="gotoLast();">Goto Saved Progress</button></yesanswer><br>
+        <h3 class="bigThing">
+            <cont0>
+                CSS! CSS stands for <b>C</b>ascading <b>S</b>tyle<b>s</b>heets, and boy, is it awesome!<br>
+            </cont0>
+        </h3>
+    </body>
+</html>

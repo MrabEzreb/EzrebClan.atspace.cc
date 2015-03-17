@@ -103,3 +103,12 @@ coder {
     width: 70%;
     text-align: left;
 }
+huge {
+    font-size: 100px;
+}
+.bigThing {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+}
