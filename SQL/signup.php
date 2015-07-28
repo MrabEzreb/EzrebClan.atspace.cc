@@ -6,10 +6,10 @@
             $Email = $_POST["email"];
             $User = $_POST["username"];
             $Pass = $_POST["password"];
-            $servername = "mysql14.000webhost.com";
-            $username = "a9340268_test";
+            $servername = "localhost";
+            $username = "0fe_16464972";
             $password = "4edxz7yhbn";
-            $db = "a9340268_test";
+            $db = "0fe_16464972_main";
             try {
                 $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
                 // set the PDO error mode to exception

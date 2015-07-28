@@ -23,6 +23,7 @@ function addScript(src) {
 	src2 = fillInLink2(src);
 	scrElem = document.createElement("script");
 	scrElem.setAttribute("src", src2);
+    scrElem.setAttribute("type", "text/javascript");
 	loader.appendChild(scrElem);
 }
 function addStyle(src) {
@@ -37,7 +38,7 @@ function addStyle(src) {
 function loadScripts() {
 	"use strict";
 	addScript("/javascripts/1jquery.js");
-	addScript("/javascripts/3link.js");
+	//addScript("/javascripts/3link.js");
 	addScript("/javascripts/4navBar.js");
 	addScript("/javascripts/5user.js");
 	addScript("/javascripts/announcement.js");

@@ -7,10 +7,10 @@
             $User = $_POST["username"];
             $Pass = $_POST["password"];
             // Alpha Server
-            $servername = "localhost";
-            $username = "root";
+            $servername = "10.0.0.20";
+            $username = "0fe_16464972";
             $password = "4edxz7yhbn";
-            $db = "alphatesting1";
+            $db = "0fe_16464972_main";
             // Beta Server
 //            $servername = "mysql14.000webhost.com";
 //            $username = "a9340268_test";
@@ -57,7 +57,7 @@
             }
             $msg = "Hello! Thank you for registering at the Ezreb Clan Official Website!\nPlease go to this link: ".$_SERVER["SERVER_NAME"]."/Account/verify/$hashcode to complete your registration";
             $msg = wordwrap($msg,70);
-            $headers = "From: noreply@ezrebclan.grn.cc" . "\r\n" . "CC: zerbebram@gmail.com";
+            $headers = "From: noreply@Ezreb.dtdns.net" . "\r\n";
             mail($Email, "Test Email", $msg, $headers);
             mkdir("verify");
             mkdir("verify/$hashcode");
@@ -108,7 +108,7 @@ EOD;
             fwrite($newFile, $newIndexText);
             fclose($testFile);
             fclose($newFile);
-            echo "<meta http-equiv=\"refresh\" content=\"0; url=../../\">";
+            //echo "<meta http-equiv=\"refresh\" content=\"0; url=../../\">";
             $conn = null;
         ?>
     </body>

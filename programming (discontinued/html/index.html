@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../../javascripts/scriptLoader.js"></script>
+        <script>
+            var sections = 4;
+            function yes() {
+                "use strict";
+                var no1, yes1, no2, yes2;
+                no1 = document.getElementsByTagName("noanswer")[0];
+                yes1 = document.getElementsByTagName("yesanswer")[0];
+                no1.style.display = "none";
+                yes1.style.display = "block";
+                no2 = document.getElementById("no");
+                yes2 = document.getElementById("yes");
+                no2.style.display = "none";
+            }
+            function no() {
+                "use strict";
+                var no1, yes1, no2, yes2;
+                no1 = document.getElementsByTagName("noanswer")[0];
+                yes1 = document.getElementsByTagName("yesanswer")[0];
+                no1.style.display = "block";
+                yes1.style.display = "none";
+                no2 = document.getElementById("no");
+                yes2 = document.getElementById("yes");
+                yes2.style.display = "none";
+            }
+        </script>
+        <script>
+            function continueOn(inter) {
+                "use strict";
+                var cont, i;
+                for (i = 0; i <= inter; i++) {
+                    cont = document.getElementById("cont" + i);
+                    cont.style.display = "block";
+                }
+                window.localStorage.setItem("htmlProgress", "" + inter);
+            }
+            function findLast() {
+                "use strict";
+                var last;
+                last = window.localStorage.getItem("htmlProgress");
+                if (last != null) {
+                    last = +last;
+                    yes();
+                    continueOn(last);
+                }
+            }
+            function gotoLast() {
+                "use strict";
+                var last, meta, body;
+                last = window.localStorage.getItem("htmlProgress");
+                if (last != null) {
+                    last = +last;
+                    meta = document.createElement("meta");
+                    meta.setAttribute("http-equiv", "refresh");
+                    meta.setAttribute("content", "0; url=#contb" + last);
+                    body = document.getElementsByTagName("body")[0];
+                    body.appendChild(meta);
+                }
+            }
+            window.onload = function() {
+                "use strict";
+                var length, but, i, but2, blocks, book;
+                length = sections;
+                for (i = 0; i <= length; i++) {
+                    but = document.getElementsByTagName("contb" + i)[0];
+                    but2 = document.createElement("button");
+                    but2.setAttribute("style", "background-color: green; height: 40px; width: auto; font-size: 25px;");
+                    but2.setAttribute("onclick", "continueOn(" + i + ");");
+                    but2.appendChild(document.createTextNode("Continue"));
+                    but.appendChild(but2);
+                    book = document.createElement("a");
+                    book.id = "contb" + i;
+                    but.appendChild(book);
+                    blocks = document.getElementsByTagName("cont" + i)[0];
+                    blocks.id = "cont" + i;
+                    blocks.style.display = "none";
+                    blocks.style.textAlign = "center";
+                }
+                findLast();
+            };
+        </script>
+    </head>
+    <body>
+        <announcement></announcement>
+        <nav array="main" active=0></nav>
+        <h2 class="center">Ready to learn some html?</h2>
+        <h6 class="center">hint, say yes</h6>
+        <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-1" style="text-align:center;"><button id="yes" onclick="yes();" style="background-color: green; color: red; height: 40px; width: 60px; font-size: 25px;">Yes</button></div>
+            <div class="col-sm-1" style="text-align:center;"><button id="no" onclick="no();" style="background-color: red; color: green; height: 40px; width: 60px; font-size: 25px;">No</button></div>
+            <div class="col-sm-5"></div>
+        </div>
+        <noanswer style="display: none; text-align: center;"><h3>Aww, too bad. :(</h3></noanswer>
+        <yesanswer style="display: none; text-align: center;"><h3>Yay!</h3><br><h5>Press continue buttons to advance.</h5><br><h5>Your progress is automatically saved.</h5><contb0></contb0><br><br><button style="background-color: blue; height: 40px; width: auto; font-size: 25px; color: orange;" onclick="gotoLast();">Goto Saved Progress</button></yesanswer><br>
+        <h3 class="bigThing">
+            <cont0>
+                <huge>INSERT VIDEO</huge><br>
+                Hey there! My name is Mrab Ezreb, and I will be your tour guide in the amazing world of HTML!<br>
+                If you know a bit about HTML, just scan through each section until you find something that you don't know!<br>
+                When I want to give you an example, I will do something like this:<br><br>
+                <code><pre>
+&lt;h4&gt;Hi There!&lt;/h4&gt;
+                </pre></code>
+                <coder>
+                    <h4>Hi There!</h4>
+                </coder><br>
+                This way, you can see both the code, and the final result! Pretty neat!<br>
+                Note, I have to convert the special characters into ASCII character codes in order to show them on the webpage. The code for that last example actually looks like this:<br>
+                <code><pre>
+&amp;lt;h4&amp;gt;Hi There!&amp;lt;/h4&amp;gt;
+                </pre></code>
+                <coder>
+                &lt;h4&gt;Hi There!&lt;/h4&gt;
+                </coder><br><br>
+                Also, if there is a acronym that you don't know, hover over it, and it will show you the full word! (It won't work if you try to hover over HTML. Everything else will though)<br>
+                Alright. Are you ready to get coding? If so, click the continue button to start your adventure! ;)<br>
+                <contb1></contb1>
+            </cont0>
+            <cont1>
+                <br><br><br>
+                HTML is a <i>markup</i> language.<br>
+                Markup languages are not used to write programs, instead, they are used to tell programs what to do.<br>
+                In fact, markup is in HTML's name!<br>
+                <b>H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage<br>
+                Markup languages tell programs what to do using <i>markup tags</i>. Each tag is a single instruction or piece of data.<br>
+                In the case of HTML, these tags are called, you guessed it, HTML tags!<br><br>
+                Sidenote, I will often use the words "tag" and "element" interchangebly. Technically, they are not the same thing, but we will get to that later.<br><br>
+                These HTML tags give your web browser <b>data</b>, which your browser uses to construct a visual webpage.<br>
+                Markup languages are programming languages like any other however, and so they have their file extensions and such. For HTML, you make .html files, and these are called <i>HTML Documents</i>.<br>
+                Here is an example of a simple HTML page.<br>
+                <code><pre>
+&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+  &lt;title&gt;Page Title&lt;/title&gt;<br />
+&lt;/head&gt;<br />
+<br />
+&lt;body&gt;<br />
+  &lt;h1&gt;My First Heading&lt;/h1&gt;<br />
+  &lt;p&gt;My first paragraph.&lt;/p&gt;<br />
+&lt;/body&gt;<br />
+<br />
+&lt;/html&gt;
+                </pre></code><br>
+                <coder>
+<h1>My First Heading</h1>
+                    <p>My first paragraph.</p>
+                </coder><br>
+                Whoa, hold your horses, where did all that code go? What did it do? All I see is that heading and paragraph text!! What is going on!?!?!?!?<br>
+                Fear not, that other code will be explained!<br><br>
+                <ul>Explaination
+                    <li>&lt;!DOCTYPE html&gt; tells the browser that this is an html file. (Why not just check if it is a .html file? Reasons, reasons that you don't need to know yet.)</li>
+                    <li>&lt;html&gt; and &lt;/html&gt; are the beginning and ending of the html document.</li>
+                    <li>&lt;head&gt; and &lt;/head&gt; contain extra information that your browser recieves, but isn't part of the webpage, for example...</li>
+                    <li>...&lt;title&gt;Page Title&lt;/title&gt; tells the browser the title of the webpage. This is what gets shown on the tab for the webpage.</li>
+                    <li>&lt;body&gt; and &lt;/body&gt; are the beginning and ending of the body of the webpage. This is what you actually see.</li>
+                    <li>&lt;h1&gt;My First Heading&lt;/h1&gt; is the beginning, content, and ending of a heading-styled text element.</li>
+                    <li>&lt;p&gt;My first paragraph.&lt;/p&gt; is the beginning, content, and ending of a paragraph-styled text element.</li>
+                </ul><br>
+                So there you go, pretty simple, but at the same time pretty cool!<br>
+                Now, how about these HTML tags. These things look something like this:<br><br>
+                &lt;<styled style="color: green;">tagname</styled> <styled style="color: blue;">attribute</styled>=<styled style="color: red;">value</styled> <styled style="color: blue;">attribute</styled>=<styled style="color: red;">value</styled>&gt;some text or something&lt;/<styled style="color: green;">tagname</styled>&gt;<br>(Colors provided for easier readability.)<br><br>
+                If you know basic XML, than this might look familier to you.<br>
+                HTML tags useually come in pairs. The first of the pair is a <i>opening tag</i> and the second is a <i>closing tag</i>. An end tag is exactly like its corrisponding start tag, except for that there is a slash before the <i>tag name</i>. Look again.<br>
+                &lt;<styled style="color: green;">tagname</styled>&gt;  &lt;<styled style="color: green;">/tagname</styled>&gt;<br>
+                Pretty simple, right?<br>
+                <span id="basicText" onclick="basicTextEditorClose();" style="background-color: black; color: white; display: none; position: absolute; width: 60%; left: 20%;">(Click to close) When using a basic text editor, you have to specify that you want to save as an html file. To do this on Windows, using Notepad, go to File => Save As..., then below the filename, open the dropdown and select All Files. Then, type in the filename, but add .html to the end.</span>
+                Now, would you like to start writing your own HTML? You can! Right now! You have three options:<br>
+                <br>
+                <br>
+                <ul>
+                    <script>
+                        function basicTextEditorOpen () {
+                            "use strict";
+                            var box;
+                            box = document.getElementById("basicText");
+                            box.style.display = "block";
+                        }
+                        function basicTextEditorClose () {
+                            "use strict";
+                            var box;
+                            box = document.getElementById("basicText");
+                            box.style.display = "none";
+                        }
+                    </script>
+                    
+                    <li><span onclick="basicTextEditorOpen();">Use a built-in text editor on your computer, like Notepad or TextEdit. (click for more info)</span></li>
+                    <li>(NOT A THING YET)Use my web-based HTML editor. Using this, you can simply press a button and instantly see the results of your code.</li>
+                    <li>Download <a href="http://brackets.io/">Brackets</a>. It is a <i>fantasic</i> <span title="Integrated Development Environment">IDE</span> for HTML, <span title="Cascaded Style Sheets (I have a tutorial on this too!)">CSS</span>, Javascript, and <span title="PHP: Hypertext Preprocessor, yes, I know that the acronym contains the acronym, that's why I prefer to say Hypertext PreProcessor.">PHP</span>! It's really just an all around awesome program.</li>
+                </ul>
+                So, no matter what you choose, it will still work. Now, let's move on to the next section, and learn some basic HTML tags.<br>
+                <contb2></contb2>
+            </cont1>
+            <cont2>
+                <div class="HTML-Documents">
+                    HTML documents are what get sent to your browser when you access a webpage.<br>
+                    It is important to note that an HTML <i>Document</i> is not the same as an HTML <i>File</i>. HTML Files are any file with the .html extension, while HTML Documents are actual webpages.<br>
+                    <code><pre>&lt;!DOCTYPE html&gt;</pre></code>
+                    This defines that the file, regardless of the file extension, is an html file.<br>
+                    Within a file defined as an html document, you have to define the beginning and end of the html. You do this with the html element.<br>
+                    <code><pre>&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+<br />
+&lt;/html&gt;</pre></code>
+                    Now that the file is an html document, and the html document start and end have been defined, we now need to define the beginning and end of what is actually displayed on the webpage. We do this with the body element.<br>
+                    <code><pre>&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+    &lt;body&gt;<br />
+<br />
+    &lt;/body&gt;<br />
+&lt;/html&gt;</pre></code>
+                    Now that we have everything that we need, now let's add in some content. How about some headings?<br>
+                    <code><pre>&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+    &lt;body&gt;<br />
+        &lt;h1&gt;This is the biggest heading, h1&lt;/h1&gt;<br />
+        &lt;h6&gt;This is the smallest heading, h6&lt;/h6&gt;<br />
+    &lt;/body&gt;<br />
+&lt;/html&gt;</pre></code>
+                    If we just want some normal text, we can use the p, for paragraph, tag.<br>
+                    <code><pre>&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+    &lt;body&gt;<br />
+        &lt;h1&gt;This is the biggest heading, h1&lt;/h1&gt;<br />
+        &lt;h6&gt;This is the smallest heading, h6&lt;/h6&gt;<br />
+        &lt;p&gt;Hi there! I am a paragraph text! :D&lt;/p&gt;<br />
+    &lt;/body&gt;<br />
+&lt;/html&gt;</pre></code>
+                    How about another very common element, a link.<br>
+                    To make a link, you need to use an "a" element. Then, you have to add an href attribute for the link.<br>
+                    <code><pre>&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+    &lt;body&gt;<br />
+        &lt;h1&gt;This is the biggest heading, h1&lt;/h1&gt;<br />
+        &lt;h6&gt;This is the smallest heading, h6&lt;/h6&gt;<br />
+        &lt;p&gt;Hi there! I am a paragraph text! :D&lt;/p&gt;<br />
+        &lt;a href="http://example.com"&gt;Click here to go to example.com!&lt;/a&gt;<br />
+    &lt;/body&gt;<br />
+&lt;/html&gt;</pre></code>
+                    Next up is a pretty simple element, the line break.<br>
+                    You <b>need</b> line break elements because html does not recognize line breaks in the code.<br>
+                    They are very simple. All that you need is a simple &lt;br&gt;.<br>
+                    <code><pre>&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+    &lt;body&gt;<br />
+        &lt;h1&gt;This is the biggest heading, h1&lt;/h1&gt;<br />
+        &lt;h6&gt;This is the smallest heading, h6&lt;/h6&gt;<br />
+        &lt;p&gt;Hi there! I am a paragraph text! :D&lt;/p&gt;<br />
+        &lt;br&gt;<br />
+        &lt;a href="http://example.com"&gt;Click here to go to example.com!&lt;/a&gt;<br />
+    &lt;/body&gt;<br />
+&lt;/html&gt;</pre></code>
+                    And, finally, the last element for now, the img element.<br>
+                    This one does not have a closing tag, however, it has quite a few attributes.<br>
+                    The first is the src attribute, which has to be a link to the image.<br>
+                    The next is the alt attribute, which is displayed when the image can not be loaded.<br>
+                    Finally, the width and height attributes, which are self-explainatory.<br>
+                    <code><pre>&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+    &lt;body&gt;<br />
+        &lt;h1&gt;This is the biggest heading, h1&lt;/h1&gt;<br />
+        &lt;h6&gt;This is the smallest heading, h6&lt;/h6&gt;<br />
+        &lt;p&gt;Hi there! I am a paragraph text! :D&lt;/p&gt;<br />
+        &lt;br&gt;<br />
+        &lt;a href="http://example.com"&gt;Click here to go to example.com!&lt;/a&gt;<br />
+        &lt;img src="http://upload.wikimedia.org/wikipedia/commons/c/ce/Example_image.png" alt="example image" width="100" height="100"&gt;<br />
+    &lt;/body&gt;<br />
+&lt;/html&gt;</pre></code>
+                    FINALLY, the next section. I'll see you there!<br><br><br>
+                    <contb3></contb3>
+                </div>
+            </cont2>
+            <cont3>
+                Now, onto html attributes.<br>
+                Remember this example?<br>
+                &lt;<styled style="color: green;">tagname</styled> <styled style="color: blue;">attribute</styled>=<styled style="color: red;">value</styled> <styled style="color: blue;">attribute</styled>=<styled style="color: red;">value</styled>&gt;some text or something&lt;/<styled style="color: green;">tagname</styled>&gt;<br>
+                Let's start with just one attribute.<br>
+                &lt;<styled style="color: green;">tagname</styled> <styled style="color: blue;">attribute</styled>=<styled style="color: red;">value</styled>&gt;some text or something&lt;/<styled style="color: green;">tagname</styled>&gt;<br>
+                If you know with XML, these should be pretty familier.<br>
+                In html, you can use attributes to add extra information into an element.<br>
+                In the last section, you used attributes for links and images.<br>
+                Let's go over some basic attributes.<br>
+                First off, the title attribute.<br>
+                Look at the code, then hover your mouse over the example text.<br>
+                <code><pre>&lt;p title="Hello there!"&gt;Hover over me!&lt;/p&gt;</pre></code>
+                <coder>
+                    <p title="Hello there!">Hover over me!</p>
+                </coder><br>
+                Pretty cool, huh?<br>
+                Next up is the alt attribute. This one is kindof hard to display, but I figured something out.<br>
+                <code><pre>&lt;p alt="Hello there!"&gt;Hi!&lt;/p&gt;</pre></code>
+                <br>This is what normally happens:<br><br>
+                <coder><p alt="Hello there!">Hi!</p></coder>
+                <br>This is what happens if it failed to load:<br><br>
+                <coder><p>Hello there!</p></coder>
+                <br>
+                Typically, this attribute is used for image elements, since text will useually load, and if not, the alt text probobly won't load either.<br>
+                This section was a bit shorter, but I think that it was still pretty informative.<br>
+                Let's move on, shall we?<br><br>
+                <contb4></contb4>
+            </cont3>
+            <cont4>
+                
+            </cont4>
+        </h3>
+    </body>
+</html>

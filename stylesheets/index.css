@@ -3,14 +3,19 @@
     position: relative;
     z-index: 4;
 }
+#mainJumbo {
+    height: inherit;
+    display: block;
+}
 .jumbotron .containerindex {
-    background-image: url("../images/Mrab's Youtube.jpg");
+    background-image: url("../images/Mrab's%20Youtube.png");
+    height: 90%;
     color: red;
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-position: right;
     display: block;
     position: relative;
+    background-size: contain;
     z-index: 5;
 }
 .jumbotron .containerdnd {
@@ -110,5 +115,33 @@ huge {
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
+    text-align: center;
+}
+.containerindex .row {
+    
+}
+
+ad23 {
+    position: relative;
+}
+
+nav {
+    padding-top: 6px;
+    position: relative;
+}
+
+#addiv {
+    left: calc(50% - 365px);
+    left: calc(50% - 365px);
+    top: 3px;
+    border-style: solid;
+    border-radius: 1px;
+    border-color: black;
+    outline-style: solid;
+    outline-color: aqua;
+    outline-width: medium;
+    width: 730px;
+    position: relative;
+    height: 150px;
     text-align: center;
 }

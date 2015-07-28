@@ -1,6 +1,35 @@
 var $, thisURL;
 $ = window.$;
 thisURL = document.URL;
+function closeChildren(htmlObject) {
+    "use strict";
+    var children, i;
+    children = htmlObject.children;
+    if (children.length === 0) {
+        return;
+    } else {
+        for (i = 0; i < children.length; i = i + 1) {
+            closeChildren(children[i]);
+            if (children[i].getAttribute("hide") === "false") {children[i].style.display = "none"; }
+        }
+        return;
+    }
+}
+function clicked(id) {
+	"use strict";
+    var drop, children, i;
+    drop = document.getElementById(id).getElementsByClassName("dropdown-menu")[0];
+    if (drop.style.display === "block") {
+        drop.style.display = "none";
+        for (i = 0; i < drop.children.length; i = i + 1) {
+            closeChildren(drop.children[i]);
+        }
+    } else if (drop.style.display === "none") {
+        drop.style.display = "block";
+    } else {
+        drop.style.display = "block";
+    }
+}
 function generateUser() {
     "use strict";
     var user, pic, frame;
@@ -22,157 +51,144 @@ function testingData() {
     window.sessionStorage.setItem("HomeLink", "/EzrebClan/adam.html");
     window.sessionStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb");
 }
-function openDropdown() {
-    "use strict";
-    var userButton, userPanel, body, text, link, currentURL, startOfURLIndex, text2, text3, link2, link3;
-    currentURL = window.document.URL;
-    startOfURLIndex = currentURL.indexOf("/");
-    userButton = document.getElementsByTagName("button")[0];
-    userPanel = document.createElement("ul");
-    userPanel.className = "dropdown-menu userPanel";
-    userPanel.style.textAlign = "center";
-    text = document.createElement("li");
-    link = document.createElement("a");
-    link.style.clear = "none";
-    link.style.position = "relative";
-    text.style.textAlign = "center";
-    text.style.clear = "none";
-    if (window.sessionStorage.getItem("YTLink") === null) {
-    	link.appendChild(document.createTextNode("Signup"));
-	    link.setAttribute("role", "menuitem");
-	    link.href = fillInLinkStr("/Account/Signup");
-    } else {
-	    link.appendChild(document.createTextNode(window.sessionStorage.getItem("username")));
-	    link.setAttribute("role", "menuitem");
-	    link.href = fillInLinkStr(window.sessionStorage.getItem("HomeLink"));
-	}
-    text.appendChild(link);
-    userPanel.appendChild(text);
-    text2 = document.createElement("li");
-    link2 = document.createElement("a");
-    link2.style.clear = "none";
-    if (window.sessionStorage.getItem("YTLink") === null) {
-    	link2.appendChild(document.createTextNode("Login"));
-	    link2.setAttribute("role", "menuitem");
-	    link2.href = fillInLinkStr("/Account/Login");
-    } else {
-	    link2.appendChild(document.createTextNode("Youtube"));
-	    link2.setAttribute("role", "menuitem");
-	    link2.href = window.sessionStorage.getItem("YTLink");
-	}
-    text2.appendChild(link2);
-    userPanel.appendChild(text2);
-    if (window.sessionStorage.getItem("YTLink") !== null) {
-        var text4 = document.createElement("li");
-        var link4 = document.createElement("a");
-        text4.style.height = "26px";
-        link4.style.textAlign = "center";
-        link4.style.clear = "none";
-        link4.appendChild(document.createTextNode("Account Settings"));
-        link4.setAttribute("role", "menuitem");
-        link4.href = fillInLinkStr("/Account/Settings");
-        text4.appendChild(link4);
-        userPanel.appendChild(text4);
-        text3 = document.createElement("li");
-        link3 = document.createElement("a");
-        text3.style.height = "26px";
-        link3.style.textAlign = "center";
-        link3.style.clear = "none";
-        link3.appendChild(document.createTextNode("Signout"));
-        link3.setAttribute("role", "menuitem");
-        link3.href = fillInLinkStr("/Account/Signout");
-        text3.appendChild(link3);
-        userPanel.appendChild(text3);
-    }
-    body = document.getElementsByTagName("nav")[0];
-    userPanel.style.position = "relative";
-    userPanel.style.height = "auto";
-    userPanel.style.float = "none";
-    userPanel.style.right = "100%";
-    userPanel.style.left = "0%";
-    userPanel.style.display = "block";
-    userPanel.style.zIndex = "6";
-    userPanel.style.backgroundColor = "white";
-    userButton.appendChild(userPanel);
-}
-function closeDropdown() {
-    "use strict";
-    var userPanel, i;
-    userPanel = document.getElementsByClassName("userPanel");
-    for (i = 0; i < userPanel.length; i = i + 1) {
-        userPanel[i].style.display = "none";
-    }
-}
-function toggleDrop() {
-    "use strict";
-    var button, drop;
-    button = document.getElementById("user");
-    button.onpaste();
-    if (button.onpaste === closeDropdown) {
-        button.onpaste = openDropdown;
-    } else {
-        button.onpaste = closeDropdown;
-    }
-}
 function grabData() {
 	"use strict";
-	if(window.localStorage.getItem("username") !== null) {
+	if (window.localStorage.getItem("username") !== null) {
 	    window.sessionStorage.setItem("profileImSrc", window.localStorage.getItem("profileImSrc"));
 	    window.sessionStorage.setItem("username", window.localStorage.getItem("username"));
 	    window.sessionStorage.setItem("HomeLink", "/Profiles/" + window.localStorage.getItem("username"));
-	    window.sessionStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb");
-  	} else if(window.sessionStorage.getItem("username") === null) {
+    } else if (window.sessionStorage.getItem("username") === null) {
 	    window.sessionStorage.setItem("profileImSrc", "");
 	    window.sessionStorage.setItem("username", "Guest");
 	    window.sessionStorage.setItem("HomeLink", "/");
-	} else if(window.sessionStorage.getItem("username") === "Guest") {
+	} else if (window.sessionStorage.getItem("username") === "Guest") {
 	    window.sessionStorage.setItem("profileImSrc", "");
 	    window.sessionStorage.setItem("username", "Guest");
 	    window.sessionStorage.setItem("HomeLink", "/");
 	} else {
 	    window.sessionStorage.setItem("HomeLink", "/Profiles/" + window.sessionStorage.getItem("username"));
-	    window.sessionStorage.setItem("YTLink", "https://youtube.com/c/MrabEzreb");
-    }       
+    }
 }
-function generateButton() {
+function checkIfFile(link) {
+	"use strict";
+	var fileStr, htmlStr, slash;
+	fileStr = link.substring(0, 5);
+	htmlStr = link.substring(link.length - 5);
+	slash = link.substring(link.length - 1);
+	if (fileStr === "file:" && htmlStr !== ".html") {
+		if (slash === "/") {
+			return link + "index.html";
+		} else {
+			return link + "/index.html";
+		}
+	}
+	return link;
+}
+function checkHttp(link) {
+	"use strict";
+	var fileStr, htmlStr, slash;
+	fileStr = link.substring(0, 4);
+	if (fileStr === "http") {
+		return true;
+	}
+	return false;
+}
+function fillInLinkStr(link) {
+	"use strict";
+	var text, linkTo, a, textN, subLink, thisLink, baseLink, homeLink, oldLink;
+	linkTo = link;
+	a = document.createElement("a");
+	thisLink = document.URL;
+	oldLink = thisLink;
+	thisLink = thisLink.toLowerCase();
+	subLink = oldLink.substring(thisLink.indexOf("ezrebclan"));
+	baseLink = oldLink.substring(0, thisLink.indexOf("ezrebclan"));
+	homeLink = baseLink + subLink.substring(0, subLink.indexOf("/"));
+	if (checkHttp(link) === true) {
+		a.setAttribute("href", link);
+	} else {
+		a.setAttribute("href", checkIfFile(homeLink + linkTo));
+	}
+	return a.getAttribute("href");
+}
+function getNavElement(name, link) {
     "use strict";
-    var button, username, text, text2, br, image, navPills, p, nav, row, colsm12;
-    //testingData();
-    grabData();
-    username = window.sessionStorage.getItem("username");
-    button = document.createElement("button");
-    button.setAttribute("type", "button");
-    button.onclick = toggleDrop;
-    button.onpaste = openDropdown;
-    button.id = "user";
-    button.setAttribute("data-toggle", "dropdown");
-    text = document.createTextNode("Welcome, ");
-    br = document.createElement("br");
-    text2 = document.createTextNode(username);
-    image = document.createElement("img");
-    image.src = window.sessionStorage.getItem("profileImSrc");
-    nav = document.getElementsByTagName("nav")[0];
-    row = nav.getElementsByClassName("row")[0];
-    colsm12 = row.getElementsByClassName("col-sm-12")[0];
-    navPills = colsm12.getElementsByClassName("nav nav-pills")[0];
-    image.style.height = "40px";
-    image.style.left = "0px";
-    image.style.paddingRight = "20px";
-    button.style.height = "40px";
-    p = document.createElement("p");
-    p.appendChild(text);
-    p.appendChild(br);
-    p.appendChild(text2);
-    p.style.verticalAlign = "middle";
-    p.style.textAlign = "center";
-    p.style.fontSize = "15px";
-    p.style.lineHeight = "18px";
-    p.style.float = "right";
-    button.appendChild(image);
-    button.appendChild(p);
-    button.style.float = "right";
-    button.style.right = "0px";
-    button.style.width = "auto";
-    navPills.appendChild(button);
+    var elem, link2;
+    elem = document.createElement("li");
+    link2 = document.createElement("a");
+    link2.setAttribute("role", "menuitem");
+    link2.href = link;
+    link2.appendChild(document.createTextNode(name));
+    elem.appendChild(link2);
+    elem.setAttribute("hide", "true");
+    return elem;
 }
-generateButton();
+function getUserElement() {
+    "use strict";
+    var link2, elem, elem2, user, profileImSrc, homeLink, navElements, i, nav;
+    user = window.sessionStorage.getItem("username");
+    profileImSrc = window.sessionStorage.getItem("profileImSrc");
+    homeLink = window.sessionStorage.getItem("HomeLink");
+    elem = document.createElement("li");
+    elem.style.backgroundImage = "/Profiles/" + user + "/profileIm.png";
+    elem.setAttribute("class", "dropdown");
+    elem.setAttribute("id", "user");
+    link2 = document.createElement("a");
+    link2.href = "#";
+    link2.onclick = function () { clicked(user); };
+    link2.appendChild(document.createTextNode(user));
+    elem.appendChild(link2);
+    elem2 = document.createElement("ul");
+    elem2.className = "dropdown-menu";
+    elem2.setAttribute("role", "navigation");
+    elem2.setAttribute("id", "dropdown-menu");
+    navElements = [
+        getNavElement("User Home", homeLink),
+        getNavElement("Account Settings", "/Account/Settings"),
+        getNavElement("Signout", "/Account/Signout")
+    ];
+    for (i = 0; i < navElements.length; i = i + 1) {
+        navElements[i].setAttribute("role", "presentation");
+//        navElements[i].style.width = "inherit";
+        elem2.appendChild(navElements[i]);
+    }
+    elem.appendChild(elem2);
+    elem2.style.width = "100%";
+    nav = document.getElementById("navList2");
+    nav.appendChild(elem);
+}
+function getNoUserElement() {
+    "use strict";
+    var link2, elem, elem2, navElements, i, nav;
+    elem = document.createElement("li");
+    elem.setAttribute("class", "dropdown");
+    elem.setAttribute("id", "user");
+    link2 = document.createElement("a");
+    link2.href = "#";
+    link2.onclick = function () { clicked("user"); };
+    link2.appendChild(document.createTextNode("Login/Signup"));
+    elem.appendChild(link2);
+    elem2 = document.createElement("ul");
+    elem2.className = "dropdown-menu";
+    elem2.setAttribute("role", "navigation");
+    elem2.setAttribute("id", "dropdown-menu");
+    navElements = [
+        getNavElement("Login", "/Account/Login"),
+        getNavElement("Signup", "/Account/Signup")
+    ];
+    for (i = 0; i < navElements.length; i = i + 1) {
+        navElements[i].setAttribute("role", "presentation");
+//        navElements[i].style.width = "inherit";
+        elem2.appendChild(navElements[i]);
+    }
+    elem.appendChild(elem2);
+    elem2.style.width = "100%";
+    nav = document.getElementById("navList2");
+    nav.appendChild(elem);
+}
+grabData();
+if (window.sessionStorage.getItem("username") === "Guest") {
+    getNoUserElement();
+} else {
+    getUserElement();
+}

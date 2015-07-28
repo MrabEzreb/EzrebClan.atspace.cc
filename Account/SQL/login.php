@@ -23,9 +23,9 @@
             // Alpha Server
             $servername2 = "mysql.freehostingnoads.net";
             $servername = "localhost";
-            $username = "root";
+            $username = "0fe_16464972";
             $password = "4edxz7yhbn";
-            $db = "alphatesting1";
+            $db = "0fe_16464972_main";
 //            // Beta Server
 //            $servername = "mysql14.000webhost.com";
 //            $username = "a9340268_test";

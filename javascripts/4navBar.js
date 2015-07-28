@@ -1,3 +1,96 @@
+var $, links, i;
+$ = window.$;
+
+
+function getLinks() {
+	"use strict";
+	var allLinks, correctLinks, i;
+	correctLinks = [];
+	allLinks = document.getElementsByTagName("goto");
+	for (i = 0; i < allLinks.length; i += 1) {
+        correctLinks.push(allLinks[i]);
+	}
+	return allLinks;
+}
+function test() {
+	"use strict";
+	var p, links;
+	p = document.getElementById("p");
+	links = getLinks();
+	p.innerHTML = links.valueOf();
+}
+function checkIfFile(link) {
+	"use strict";
+	var fileStr, htmlStr, slash;
+	fileStr = link.substring(0, 5);
+	htmlStr = link.substring(link.length - 5);
+	slash = link.substring(link.length - 1);
+	if (fileStr === "file:" && htmlStr !== ".html") {
+		if (slash === "/") {
+			return link + "index.html";
+		} else {
+			return link + "/index.html";
+		}
+	}
+	return link;
+}
+function checkHttp(link) {
+	"use strict";
+	var fileStr, htmlStr, slash;
+	fileStr = link.substring(0, 4);
+	if (fileStr === "http") {
+		return true;
+	}
+	return false;
+}
+function fillInLink(link) {
+	"use strict";
+	var text, linkTo, a, textN, subLink, thisLink, baseLink, homeLink, oldLink;
+	text = link.innerHTML + " added";
+	linkTo = link.getAttribute("link");
+	link.innerHTML = "";
+	a = document.createElement("a");
+	textN = document.createTextNode(text);
+	a.appendChild(textN);
+	thisLink = document.URL;
+	oldLink = thisLink;
+	thisLink = thisLink.toLowerCase();
+	subLink = oldLink.substring(thisLink.indexOf("ezrebclan"));
+	baseLink = oldLink.substring(0, thisLink.indexOf("ezrebclan"));
+	homeLink = baseLink + subLink.substring(0, subLink.indexOf("/"));
+	if (checkHttp(link) === true) {
+		a.setAttribute("href", link);
+	} else {
+		a.setAttribute("href", checkIfFile(homeLink + linkTo));
+	}
+	link.appendChild(a);
+	return a.getAttribute("href");
+}
+function fillInLinkStr(link) {
+	"use strict";
+	var text, linkTo, a, textN, subLink, thisLink, baseLink, homeLink, oldLink;
+	linkTo = link;
+	a = document.createElement("a");
+	thisLink = document.URL;
+	oldLink = thisLink;
+	thisLink = thisLink.toLowerCase();
+	subLink = oldLink.substring(thisLink.indexOf("ezrebclan"));
+	baseLink = oldLink.substring(0, thisLink.indexOf("ezrebclan"));
+	homeLink = baseLink + subLink.substring(0, subLink.indexOf("/"));
+	if (checkHttp(link) === true) {
+		a.setAttribute("href", link);
+	} else {
+		a.setAttribute("href", checkIfFile(homeLink + linkTo));
+	}
+	return a.getAttribute("href");
+}
+links = getLinks();
+if (links.length > 0) {
+	for (i = 0; i < links.length; i += 1) {
+	    fillInLink(links[i]);
+	}
+}
+var linksCreated = true;
 function closeChildren(htmlObject) {
     "use strict";
     var children, i;
@@ -71,38 +164,11 @@ function getNavDrop(name, navElements) {
     elem2.setAttribute("id", "dropdown-menu");
     for (i = 0; i < navElements.length; i = i + 1) {
         navElements[i].setAttribute("role", "presentation");
+//        navElements[i].style.width = "inherit";
         elem2.appendChild(navElements[i]);
     }
     elem1.appendChild(elem2);
-    return elem1;
-}
-function getNavSlide(name, navElements) {
-    "use strict";
-    var elem1, elem2, i, a, arrow;
-    elem1 = document.createElement("li");
-    elem1.setAttribute("class", "dropdown-submenu");
-    elem1.style.float = "center";
-    elem1.style.display = "list-item";
-    elem1.setAttribute("id", name);
-    a = document.createElement("a");
-    a.href = "#";
-    a.onclick = function () { clicked(name); };
-    a.appendChild(document.createTextNode(name));
-    arrow = document.createTextNode(">");
-    a.appendChild(arrow);
-    elem1.appendChild(a);
-    elem2 = document.createElement("ul");
-    elem2.className = "dropdown-menu";
-    elem2.style.left = "100%";
-    elem2.style.top = "0%";
-    elem2.setAttribute("role", "navigation");
-    elem2.setAttribute("id", "dropdown-menu");
-    for (i = 0; i < navElements.length; i = i + 1) {
-        navElements[i].setAttribute("role", "presentation");
-        elem2.appendChild(navElements[i]);
-    }
-    elem2.setAttribute("hide", "false");
-    elem1.appendChild(elem2);
+    elem2.style.width = "100%";
     return elem1;
 }
 function loadNavElem(navElement) {
@@ -130,13 +196,9 @@ ezrebPackNav = [getNavElement("EzrebPack", "/EzrebPack"), getNavElement("Downloa
 
 dndNav = [getNavElement("Dnd Toolkit", "/Dnd"), getNavElement("Download", "/Dnd/Downloads"), getNavElement("Main Site", "/")];
 
-mainGamesDrop = [getNavElement("Dnd", "/Dnd"), getNavElement("EzrebPack", "/EzrebPack")];
+mainGamesDrop = [getNavElement("None ATM", "#")];
 
-mainClanAdamSlide = [getNavElement("Home", "/EzrebClan/AdamPlaysVideoGames"), getNavElement("Youtube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA")];
-
-mainClanMrabSlide = [getNavElement("Home", "/EzrebClan/MrabEzreb"), getNavElement("YouTube", "https://youtube.com/c/MrabEzreb")];
-
-mainClanDrop = [getNavSlide("Mrab Ezreb", mainClanMrabSlide), getNavSlide("AdamPlaysVideoGames", mainClanAdamSlide)];
+mainClanDrop = [getNavElement("Mrab Ezreb", "/EzrebClan/MrabEzreb"), getNavElement("AdamPlaysVideoGames", "/EzrebClan/AdamPlaysVideoGames")];
 
 adamClan = [getNavElement("Home", "/EzrebClan/AdamPlaysVideoGames"), getNavElement("YouTube", "https://www.youtube.com/channel/UCA757FqRtwZlBzVPZ8ffLfA"), getNavElement("Main Site", "/")];
 
@@ -176,8 +238,8 @@ function getArray(navObject) {
         profileBuilder[active].className = "active";
         return profileBuilder;
     } else if (name === "account") {
-    	account[active].className = "active";
-    	return account;
+        account[active].className = "active";
+        return account;
     } else if (name === "data") {
         hostedDataMain[active].className = "active";
         return hostedDataMain;
@@ -194,7 +256,7 @@ function insertToElem() {
     cols.className = "col-sm-12";
     list = document.createElement("ul");
     list.id = "navList2";
-    list.className = "nav nav-pills";
+    list.className = "nav nav-pills nav-justified";
     list.setAttribute("role", "tablist");
     cols.appendChild(list);
     row.appendChild(cols);
